@@ -179,12 +179,16 @@ export interface FieldMapping {
   documentFieldId: string;
   documentFieldName: string;
   documentFieldType: 'text' | 'checkbox' | 'radio' | 'dropdown' | 'date';
-  sourceType: 'provider' | 'office' | 'mailing' | 'custom' | 'static';
+  sourceType: 'provider' | 'provider-slot' | 'office' | 'mailing' | 'custom' | 'static';
   sourcePath?: string; // JSON path like "provider.npi" or "office.addressLine1" - optional for static values
   staticValue?: any; // Static value to use instead of mapping from data
   transformation?: FieldTransformation;
   defaultValue?: any;
   isRequired: boolean;
+  
+  // Provider slot support for roster mode
+  providerSlot?: number; // Which provider position (1, 2, 3, etc.) for roster mode
+  slotField?: string; // Which field from the provider (firstName, lastName, npi, etc.)
 }
 
 export interface FieldTransformation {

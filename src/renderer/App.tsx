@@ -269,7 +269,7 @@ function App() {
     })
   }
 
-  const handleSaveTemplate = async (mappings: FieldMapping[]) => {
+  const handleSaveTemplate = async (_mappings: FieldMapping[]) => {
     setShowSaveTemplateDialog(true)
   }
 
@@ -312,6 +312,8 @@ function App() {
     mailingAddressIds: string[]
     outputDirectory: string
     fileNamePattern: string
+    fillMode: 'individual' | 'roster'
+    rosterProviders?: Array<{ providerId: string; position: number }>
   }) => {
     try {
       if (!selectedDocument || fieldMappings.length === 0) {
@@ -323,41 +325,89 @@ function App() {
       const selectedProviders = providers.filter(p => selections.providerIds.includes(p.id))
       const selectedOffices = offices.filter(o => selections.officeIds.includes(o.id))
 
-      for (const provider of selectedProviders) {
-        // If offices are selected, create one document per provider-office combination
-        // Otherwise, create one document per provider
-        const officesToUse = selectedOffices.length > 0 ? selectedOffices : [null]
+      if (selections.fillMode === 'roster') {
+        // Roster mode: One document with multiple providers
+        console.log(`Roster mode: Creating single document with ${selectedProviders.length} providers`)
         
-        for (const office of officesToUse) {
-          // Generate output filename
-          let fileName = selections.fileNamePattern
-          fileName = fileName.replace('{provider.lastName}', provider.lastName || 'Provider')
-          fileName = fileName.replace('{provider.firstName}', provider.firstName || '')
-          fileName = fileName.replace('{documentName}', selectedDocument.name.split('.')[0])
-          fileName = fileName.replace('{date}', new Date().toISOString().split('T')[0])
-          
-          if (office) {
-            fileName = fileName.replace('{office.locationName}', office.locationName || 'Office')
-          }
-          
-          // Clean up filename
-          fileName = fileName.replace(/\s+/g, '_').replace(/[^a-zA-Z0-9._-]/g, '')
-          const outputPath = `${selections.outputDirectory}/${fileName}.pdf`
+        // Sort providers by their roster position if available
+        const sortedProviders = selections.rosterProviders 
+          ? selections.rosterProviders
+              .sort((a, b) => a.position - b.position)
+              .map(rp => providers.find(p => p.id === rp.providerId))
+              .filter(Boolean)
+          : selectedProviders
 
-          // Prepare data for this combination
-          const data = {
-            provider,
-            office,
-            mailingAddress: null, // TODO: Add mailing address support
-            custom: {}
-          }
+        // Generate roster filename
+        let fileName = selections.fileNamePattern
+        fileName = fileName.replace('{documentName}', selectedDocument.name.split('.')[0])
+        fileName = fileName.replace('{date}', new Date().toISOString().split('T')[0])
+        fileName = fileName.replace('{provider.lastName}', 'Roster')
+        fileName = fileName.replace('{provider.firstName}', '')
+        
+        // Clean up filename
+        fileName = fileName.replace(/\s+/g, '_').replace(/[^a-zA-Z0-9._-]/g, '')
+        const outputPath = `${selections.outputDirectory}/${fileName}.pdf`
 
-          jobs.push({
-            filePath: selectedDocument.path,
-            mappings: fieldMappings,
-            data,
-            outputPath
-          })
+        // Prepare roster data with all providers
+        const rosterData = {
+          providers: sortedProviders,
+          office: selectedOffices.length > 0 ? selectedOffices[0] : null,
+          mailingAddress: null,
+          custom: {
+            fillMode: 'roster',
+            providerCount: sortedProviders.length
+          }
+        }
+
+        jobs.push({
+          filePath: selectedDocument.path,
+          mappings: fieldMappings,
+          data: rosterData,
+          outputPath,
+          isRosterMode: true
+        })
+
+      } else {
+        // Individual mode: One document per provider (existing logic)
+        console.log(`Individual mode: Creating ${selectedProviders.length} separate documents`)
+        
+        for (const provider of selectedProviders) {
+          // If offices are selected, create one document per provider-office combination
+          // Otherwise, create one document per provider
+          const officesToUse = selectedOffices.length > 0 ? selectedOffices : [null]
+          
+          for (const office of officesToUse) {
+            // Generate output filename
+            let fileName = selections.fileNamePattern
+            fileName = fileName.replace('{provider.lastName}', provider.lastName || 'Provider')
+            fileName = fileName.replace('{provider.firstName}', provider.firstName || '')
+            fileName = fileName.replace('{documentName}', selectedDocument.name.split('.')[0])
+            fileName = fileName.replace('{date}', new Date().toISOString().split('T')[0])
+            
+            if (office) {
+              fileName = fileName.replace('{office.locationName}', office.locationName || 'Office')
+            }
+            
+            // Clean up filename
+            fileName = fileName.replace(/\s+/g, '_').replace(/[^a-zA-Z0-9._-]/g, '')
+            const outputPath = `${selections.outputDirectory}/${fileName}.pdf`
+
+            // Prepare data for this combination
+            const data = {
+              provider,
+              office,
+              mailingAddress: null, // TODO: Add mailing address support
+              custom: { fillMode: 'individual' }
+            }
+
+            jobs.push({
+              filePath: selectedDocument.path,
+              mappings: fieldMappings,
+              data,
+              outputPath,
+              isRosterMode: false
+            })
+          }
         }
       }
 
@@ -805,7 +855,7 @@ function App() {
         mappings={fieldMappings}
         providers={providers}
         offices={offices}
-        mailingAddresses={[]} // TODO: Add mailing addresses when implemented
+        _mailingAddresses={[]} // TODO: Add mailing addresses when implemented
         onFill={handleFillDocument}
       />
 

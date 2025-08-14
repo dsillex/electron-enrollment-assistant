@@ -35,7 +35,7 @@ export function useProviders() {
     }
   }
 
-  const createProvider = async (providerData: Omit<Provider, 'id' | 'createdAt' | 'updatedAt'>) => {
+  const createProvider = async (providerData: Omit<Provider, 'id' | 'createdAt' | 'updatedAt'>): Promise<Provider> => {
     try {
       console.log('=== useProviders createProvider Called ===')
       console.log('Provider data:', JSON.stringify(providerData, null, 2))
@@ -62,7 +62,7 @@ export function useProviders() {
     }
   }
 
-  const editProvider = async (provider: Provider) => {
+  const editProvider = async (provider: Provider): Promise<Provider> => {
     try {
       setLoading(true)
       setError(null)

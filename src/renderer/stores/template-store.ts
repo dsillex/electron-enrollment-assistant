@@ -66,17 +66,28 @@ export const useTemplateStore = create<TemplateState>()(
       createTemplate: async (templateData) => {
         set({ isLoading: true, error: null })
         try {
+          console.log('=== Template Store: Creating template ===')
+          console.log('Template data:', templateData)
+          
           const result = await window.electronAPI.createTemplate(templateData)
+          console.log('Template creation result:', result)
+          
           if (result.success && result.template) {
             const { templates } = get()
             set({ templates: [...templates, result.template] })
+            console.log('Template created successfully in store:', result.template.id)
             return result.template
           } else {
-            set({ error: result.error || 'Failed to create template' })
+            const errorMsg = result.error || 'Failed to create template'
+            console.error('Template creation failed:', errorMsg)
+            if (result.validationErrors) {
+              console.error('Validation errors:', result.validationErrors)
+            }
+            set({ error: errorMsg })
             return null
           }
         } catch (error) {
-          console.error('Failed to create template:', error)
+          console.error('Exception during template creation:', error)
           set({ error: 'Failed to create template' })
           return null
         } finally {

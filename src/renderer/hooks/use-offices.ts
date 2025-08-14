@@ -35,7 +35,7 @@ export function useOffices() {
     }
   }
 
-  const createOffice = async (officeData: Omit<OfficeLocation, 'id'>) => {
+  const createOffice = async (officeData: Omit<OfficeLocation, 'id'>): Promise<OfficeLocation> => {
     try {
       setLoading(true)
       setError(null)
@@ -59,7 +59,7 @@ export function useOffices() {
     }
   }
 
-  const editOffice = async (office: OfficeLocation) => {
+  const editOffice = async (office: OfficeLocation): Promise<OfficeLocation> => {
     try {
       setLoading(true)
       setError(null)

@@ -44,6 +44,9 @@ export function registerTemplateHandlers() {
   // Create new template
   ipcMain.handle('template:create', async (_, templateData: Omit<Template, 'id' | 'createdAt' | 'updatedAt' | 'version'>) => {
     try {
+      console.log('=== Template Create Handler ===')
+      console.log('Received template data:', JSON.stringify(templateData, null, 2))
+
       // Validate template data first
       const tempTemplate = {
         ...templateData,
@@ -53,16 +56,22 @@ export function registerTemplateHandlers() {
         version: 1
       } as Template
 
+      console.log('Running validation on template...')
       const validation = await templateDb.validateTemplate(tempTemplate)
+      
       if (!validation.isValid) {
+        console.error('Template validation failed:', validation.errors)
         return {
           success: false,
-          error: 'Template validation failed',
+          error: `Template validation failed: ${validation.errors.join(', ')}`,
           validationErrors: validation.errors
         }
       }
 
+      console.log('Template validation passed, creating template...')
       const template = await templateDb.createTemplate(templateData)
+      console.log('Template created successfully:', template.id)
+      
       return {
         success: true,
         template

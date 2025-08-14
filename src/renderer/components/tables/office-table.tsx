@@ -1,4 +1,3 @@
-import React from 'react'
 import { MoreHorizontal, Copy, Edit, Archive } from 'lucide-react'
 import { OfficeLocation } from '@shared/types'
 import { Button } from '@renderer/components/ui/button'
@@ -44,7 +43,6 @@ export function OfficeTable({
   } = useOfficeStore()
 
   const isAllSelected = offices.length > 0 && offices.every(office => selectedOffices.has(office.id))
-  const isIndeterminate = offices.some(office => selectedOffices.has(office.id)) && !isAllSelected
 
   const handleSelectAll = () => {
     if (isAllSelected) {
@@ -101,7 +99,6 @@ export function OfficeTable({
             <TableHead className="w-12">
               <Checkbox
                 checked={isAllSelected}
-                indeterminate={isIndeterminate}
                 onCheckedChange={handleSelectAll}
                 aria-label="Select all offices"
               />

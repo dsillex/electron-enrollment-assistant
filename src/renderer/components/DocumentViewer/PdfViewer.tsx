@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { DocumentField } from '@shared/types'
 import { FieldOverlay } from './FieldOverlay'
 import { Button } from '../ui/button'
@@ -54,7 +54,7 @@ export function PdfViewer({
       const arrayBuffer = fileBuffer.buffer.slice(
         fileBuffer.byteOffset,
         fileBuffer.byteOffset + fileBuffer.byteLength
-      )
+      ) as ArrayBuffer
 
       // Load the PDF document
       const pdf = await pdfjsLib.getDocument({ data: arrayBuffer }).promise
@@ -77,6 +77,11 @@ export function PdfViewer({
       const page = await pdfDocument.getPage(currentPage)
       const canvas = canvasRef.current
       const context = canvas.getContext('2d')
+
+      if (!context) {
+        console.error('Failed to get canvas 2D context')
+        return
+      }
 
       // Calculate scale based on zoom
       const viewport = page.getViewport({ scale: 1 })
