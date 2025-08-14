@@ -190,6 +190,11 @@ export class TemplateDatabase {
   async validateTemplate(template: Template): Promise<{ isValid: boolean; errors: string[] }> {
     const errors: string[] = []
 
+    console.log('=== Template Validation Debug ===')
+    console.log('Template name:', template.name)
+    console.log('Template document type:', template.documentType)
+    console.log('Mappings count:', template.mappings?.length || 0)
+
     // Basic validation
     if (!template.name || template.name.trim().length === 0) {
       errors.push('Template name is required')
@@ -205,6 +210,15 @@ export class TemplateDatabase {
 
     // Validate field mappings
     for (const [index, mapping] of template.mappings.entries()) {
+      console.log(`Mapping ${index + 1}:`, {
+        documentFieldId: mapping.documentFieldId,
+        sourceType: mapping.sourceType,
+        sourcePath: mapping.sourcePath,
+        providerSlot: mapping.providerSlot,
+        slotField: mapping.slotField,
+        staticValue: mapping.staticValue
+      })
+
       if (!mapping.documentFieldId || mapping.documentFieldId.trim().length === 0) {
         errors.push(`Mapping ${index + 1}: Document field ID is required`)
       }
@@ -217,12 +231,29 @@ export class TemplateDatabase {
         errors.push(`Mapping ${index + 1}: Valid field type is required`)
       }
 
-      if (!mapping.sourceType || !['provider', 'office', 'mailing', 'custom', 'static'].includes(mapping.sourceType)) {
+      if (!mapping.sourceType || !['provider', 'provider-slot', 'office', 'mailing', 'custom', 'static'].includes(mapping.sourceType)) {
         errors.push(`Mapping ${index + 1}: Valid source type is required`)
       }
 
-      if (!mapping.sourcePath || mapping.sourcePath.trim().length === 0) {
-        errors.push(`Mapping ${index + 1}: Source path is required`)
+      // Validate source data based on sourceType
+      if (mapping.sourceType === 'provider-slot') {
+        // For provider-slot, require providerSlot and slotField
+        if (!mapping.providerSlot || mapping.providerSlot < 1) {
+          errors.push(`Mapping ${index + 1}: Provider slot number is required (must be >= 1)`)
+        }
+        if (!mapping.slotField || mapping.slotField.trim().length === 0) {
+          errors.push(`Mapping ${index + 1}: Slot field is required for provider-slot mappings`)
+        }
+      } else if (mapping.sourceType === 'static') {
+        // For static, staticValue can be any value including empty string, so just check if it exists
+        if (mapping.staticValue === undefined || mapping.staticValue === null) {
+          errors.push(`Mapping ${index + 1}: Static value is required for static mappings`)
+        }
+      } else {
+        // For all other types, require sourcePath
+        if (!mapping.sourcePath || mapping.sourcePath.trim().length === 0) {
+          errors.push(`Mapping ${index + 1}: Source path is required`)
+        }
       }
     }
 
@@ -238,6 +269,9 @@ export class TemplateDatabase {
         }
       }
     }
+
+    console.log('Validation errors:', errors)
+    console.log('=== End Template Validation Debug ===')
 
     return {
       isValid: errors.length === 0,

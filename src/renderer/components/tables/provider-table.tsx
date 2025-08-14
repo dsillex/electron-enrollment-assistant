@@ -1,4 +1,3 @@
-import React from 'react'
 import { Edit, Copy, Archive, MoreHorizontal } from 'lucide-react'
 import { Provider } from '@shared/types'
 import { useProviderStore } from '@renderer/stores/provider-store'
@@ -42,8 +41,6 @@ export function ProviderTable({
 
   const isAllSelected = providers.length > 0 && 
     providers.every(provider => selectedProviders.has(provider.id))
-  
-  const isSomeSelected = providers.some(provider => selectedProviders.has(provider.id))
 
   const handleSelectAll = () => {
     if (isAllSelected) {
@@ -94,7 +91,6 @@ export function ProviderTable({
           <TableHead className="w-12">
             <Checkbox
               checked={isAllSelected}
-              indeterminate={isSomeSelected && !isAllSelected}
               onCheckedChange={handleSelectAll}
             />
           </TableHead>

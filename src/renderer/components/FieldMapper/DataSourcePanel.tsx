@@ -2,6 +2,7 @@ import React from 'react'
 import { useDrag } from 'react-dnd'
 import { Card, CardContent, CardHeader, CardTitle } from '../ui/card'
 import { Badge } from '../ui/badge'
+import { Button } from '../ui/button'
 import { Separator } from '../ui/separator'
 import { 
   User, 
@@ -17,12 +18,13 @@ import {
 } from 'lucide-react'
 
 interface DataSource {
-  type: 'provider' | 'office' | 'mailing' | 'static' | 'custom'
+  type: 'provider' | 'provider-slot' | 'office' | 'mailing' | 'static' | 'custom'
   path: string
   label: string
   description?: string
   dataType: 'string' | 'number' | 'date' | 'boolean'
   category: string
+  slotNumber?: number // For provider-slot type
 }
 
 interface DraggableDataSourceProps {
@@ -46,6 +48,8 @@ function DraggableDataSource({ source }: DraggableDataSourceProps) {
     switch (source.type) {
       case 'provider':
         return <User className="h-4 w-4" />
+      case 'provider-slot':
+        return <User className="h-4 w-4 text-blue-600" />
       case 'office':
         return <Building className="h-4 w-4" />
       case 'mailing':
@@ -142,6 +146,9 @@ function DataSourceSection({ title, icon, sources, defaultExpanded = true }: Dat
 }
 
 export function DataSourcePanel() {
+  // State for dynamic provider slot count
+  const [visibleSlotCount, setVisibleSlotCount] = React.useState(5)
+
   // Provider data sources
   const providerSources: DataSource[] = [
     // Personal Information
@@ -281,6 +288,68 @@ export function DataSourcePanel() {
     }
   ]
 
+  // Generate provider slot sources (for roster mode)
+  const generateProviderSlotSources = (slotCount: number = 5): DataSource[] => {
+    const slotSources: DataSource[] = []
+    
+    for (let slot = 1; slot <= slotCount; slot++) {
+      // Add ALL provider fields for this slot (matching providerSources above)
+      slotSources.push(
+        // Personal Information
+        { type: 'provider-slot', path: `provider[${slot}].firstName`, label: `First Name`, category: 'personal', dataType: 'string', slotNumber: slot },
+        { type: 'provider-slot', path: `provider[${slot}].middleName`, label: `Middle Name`, category: 'personal', dataType: 'string', slotNumber: slot },
+        { type: 'provider-slot', path: `provider[${slot}].lastName`, label: `Last Name`, category: 'personal', dataType: 'string', slotNumber: slot },
+        { type: 'provider-slot', path: `provider[${slot}].suffix`, label: `Suffix`, category: 'personal', dataType: 'string', slotNumber: slot },
+        { type: 'provider-slot', path: `provider[${slot}].dateOfBirth`, label: `Date of Birth`, category: 'personal', dataType: 'date', slotNumber: slot },
+        { type: 'provider-slot', path: `provider[${slot}].ssn`, label: `Social Security Number`, category: 'personal', dataType: 'string', slotNumber: slot },
+        
+        // Professional Information
+        { type: 'provider-slot', path: `provider[${slot}].npi`, label: `NPI Number`, category: 'professional', dataType: 'string', slotNumber: slot },
+        { type: 'provider-slot', path: `provider[${slot}].licenseNumber`, label: `License Number`, category: 'professional', dataType: 'string', slotNumber: slot },
+        { type: 'provider-slot', path: `provider[${slot}].licenseState`, label: `License State`, category: 'professional', dataType: 'string', slotNumber: slot },
+        { type: 'provider-slot', path: `provider[${slot}].licenseExpiration`, label: `License Expiration`, category: 'professional', dataType: 'date', slotNumber: slot },
+        { type: 'provider-slot', path: `provider[${slot}].deaNumber`, label: `DEA Number`, category: 'professional', dataType: 'string', slotNumber: slot },
+        { type: 'provider-slot', path: `provider[${slot}].deaExpiration`, label: `DEA Expiration`, category: 'professional', dataType: 'date', slotNumber: slot },
+        { type: 'provider-slot', path: `provider[${slot}].specialties`, label: `Specialties`, category: 'professional', dataType: 'string', slotNumber: slot },
+        { type: 'provider-slot', path: `provider[${slot}].caqhId`, label: `CAQH ID`, category: 'professional', dataType: 'string', slotNumber: slot },
+        { type: 'provider-slot', path: `provider[${slot}].providerType`, label: `Provider Type`, category: 'professional', dataType: 'string', slotNumber: slot },
+        { type: 'provider-slot', path: `provider[${slot}].taxonomyCodes`, label: `Taxonomy Codes`, category: 'professional', dataType: 'string', slotNumber: slot },
+        { type: 'provider-slot', path: `provider[${slot}].hireDate`, label: `Hire Date`, category: 'professional', dataType: 'date', slotNumber: slot },
+        { type: 'provider-slot', path: `provider[${slot}].medicareApprovalDate`, label: `Medicare Approval Date`, category: 'professional', dataType: 'date', slotNumber: slot },
+        { type: 'provider-slot', path: `provider[${slot}].medicaidApprovalDate`, label: `Medicaid Approval Date`, category: 'professional', dataType: 'date', slotNumber: slot },
+        
+        // Contact Information
+        { type: 'provider-slot', path: `provider[${slot}].email`, label: `Email Address`, category: 'contact', dataType: 'string', slotNumber: slot },
+        { type: 'provider-slot', path: `provider[${slot}].phone`, label: `Phone Number`, category: 'contact', dataType: 'string', slotNumber: slot },
+        { type: 'provider-slot', path: `provider[${slot}].cellPhone`, label: `Cell Phone`, category: 'contact', dataType: 'string', slotNumber: slot },
+        { type: 'provider-slot', path: `provider[${slot}].fax`, label: `Fax Number`, category: 'contact', dataType: 'string', slotNumber: slot },
+        
+        // Practice Information
+        { type: 'provider-slot', path: `provider[${slot}].practiceType`, label: `Practice Type`, category: 'practice', dataType: 'string', slotNumber: slot },
+        { type: 'provider-slot', path: `provider[${slot}].groupName`, label: `Group Name`, category: 'practice', dataType: 'string', slotNumber: slot },
+        { type: 'provider-slot', path: `provider[${slot}].taxId`, label: `Tax ID`, category: 'practice', dataType: 'string', slotNumber: slot },
+        { type: 'provider-slot', path: `provider[${slot}].medicareNumber`, label: `Medicare Number`, category: 'practice', dataType: 'string', slotNumber: slot },
+        { type: 'provider-slot', path: `provider[${slot}].medicaidNumber`, label: `Medicaid Number`, category: 'practice', dataType: 'string', slotNumber: slot },
+        
+        // Education
+        { type: 'provider-slot', path: `provider[${slot}].medicalSchool.name`, label: `Medical School`, category: 'education', dataType: 'string', slotNumber: slot },
+        { type: 'provider-slot', path: `provider[${slot}].medicalSchool.graduationYear`, label: `Graduation Year`, category: 'education', dataType: 'string', slotNumber: slot },
+        { type: 'provider-slot', path: `provider[${slot}].medicalSchool.degree`, label: `Medical Degree`, category: 'education', dataType: 'string', slotNumber: slot }
+      )
+    }
+    
+    return slotSources
+  }
+
+  // Group provider slot sources by slot number
+  const providerSlotSources = generateProviderSlotSources(visibleSlotCount)
+  const slotsByNumber = providerSlotSources.reduce((acc, source) => {
+    const slotNum = source.slotNumber!
+    if (!acc[slotNum]) acc[slotNum] = []
+    acc[slotNum].push(source)
+    return acc
+  }, {} as Record<number, DataSource[]>)
+
   return (
     <Card className="h-full">
       <CardHeader className="pb-3">
@@ -305,6 +374,38 @@ export function DataSourcePanel() {
           sources={providerSources}
           defaultExpanded={true}
         />
+        
+        <Separator />
+        
+        {/* Provider Slots for Roster Mode */}
+        <div className="space-y-2">
+          <div className="flex items-center justify-between">
+            <div className="flex items-center space-x-2 text-sm font-medium text-muted-foreground">
+              <User className="h-4 w-4 text-blue-600" />
+              <span>Provider Slots (Roster Mode)</span>
+            </div>
+            <Button 
+              variant="outline" 
+              size="sm"
+              onClick={() => setVisibleSlotCount(prev => prev + 5)}
+            >
+              Add More (+5)
+            </Button>
+          </div>
+          <div className="text-xs text-muted-foreground pl-6 mb-2">
+            Use these to assign specific providers to specific fields. Showing slots 1-{visibleSlotCount}.
+          </div>
+          
+          {Object.entries(slotsByNumber).map(([slotNum, sources]) => (
+            <DataSourceSection
+              key={slotNum}
+              title={`Provider Slot #${slotNum}`}
+              icon={<User className="h-4 w-4 text-blue-600" />}
+              sources={sources}
+              defaultExpanded={false}
+            />
+          ))}
+        </div>
         
         <Separator />
         

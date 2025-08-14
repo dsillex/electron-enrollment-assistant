@@ -53,7 +53,7 @@ export function FieldMapper({
   // Handle dropping a data source onto a document field
   const handleFieldMapping = useCallback((
     documentField: DocumentField,
-    dataSource: { type: string; path: string; label: string }
+    dataSource: { type: string; path: string; label: string; slotNumber?: number }
   ) => {
     const existingMappingIndex = mappings.findIndex(m => m.documentFieldId === documentField.id)
     
@@ -61,6 +61,19 @@ export function FieldMapper({
     let sourceType = dataSource.type as any
     let sourcePath = dataSource.path
     let staticValue: any = undefined
+    let providerSlot: number | undefined = undefined
+    let slotField: string | undefined = undefined
+
+    // Handle provider-slot sources
+    if (dataSource.type === 'provider-slot' && dataSource.slotNumber) {
+      providerSlot = dataSource.slotNumber
+      // Extract the field name from the path (e.g., provider[1].firstName -> firstName)
+      const match = dataSource.path.match(/provider\[\d+\]\.(.+)/)
+      if (match) {
+        slotField = match[1]
+        sourcePath = `provider.${slotField}` // Normalize to standard provider path
+      }
+    }
 
     // Auto-detect and configure transformations based on data source
     if (dataSource.path.startsWith('combined.')) {
@@ -133,7 +146,9 @@ export function FieldMapper({
       isRequired: documentField.required,
       defaultValue: undefined,
       transformation: transformation,
-      staticValue: staticValue
+      staticValue: staticValue,
+      providerSlot: providerSlot,
+      slotField: slotField
     }
 
     let updatedMappings: FieldMapping[]
@@ -203,7 +218,7 @@ export function FieldMapper({
     documentFields.forEach(docField => {
       const fieldNameLower = docField.name.toLowerCase().replace(/[^a-z]/g, '')
       
-      // Simple auto-matching rules
+      // Standard auto-matching rules
       let suggestedSource = null
       
       if (fieldNameLower.includes('name') && fieldNameLower.includes('first')) {

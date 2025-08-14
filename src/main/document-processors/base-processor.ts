@@ -229,6 +229,16 @@ export abstract class BaseDocumentProcessor {
         case 'provider':
           value = this.resolveJsonPath(data.provider, mapping.sourcePath.replace('provider.', ''))
           break
+        case 'provider-slot':
+          // For roster mode: get provider at specific slot position
+          if (mapping.providerSlot && mapping.slotField && data.providers && Array.isArray(data.providers)) {
+            const providerIndex = mapping.providerSlot - 1 // Convert 1-based to 0-based index
+            const provider = data.providers[providerIndex]
+            if (provider) {
+              value = this.resolveJsonPath(provider, mapping.slotField)
+            }
+          }
+          break
         case 'office':
           value = this.resolveJsonPath(data.office, mapping.sourcePath.replace('office.', ''))
           break

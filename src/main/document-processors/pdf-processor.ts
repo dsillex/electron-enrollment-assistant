@@ -214,7 +214,7 @@ export class PdfProcessor extends BaseDocumentProcessor {
         const field = {
           id: name,
           name: this.cleanFieldName(name),
-          type: 'radio',
+          type: 'radio' as const,
           value: pdfField.getSelected() || undefined,
           required: this.isFieldRequired(pdfField),
           options: options.length > 0 ? options : undefined // Only include if we have options
@@ -242,7 +242,7 @@ export class PdfProcessor extends BaseDocumentProcessor {
         const field = {
           id: name,
           name: this.cleanFieldName(name),
-          type: 'dropdown',
+          type: 'dropdown' as const,
           value: pdfField.getSelected() || undefined,
           required: this.isFieldRequired(pdfField),
           options: options.length > 0 ? options : undefined // Only include if we have options
