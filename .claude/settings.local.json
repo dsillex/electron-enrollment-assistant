@@ -1,0 +1,21 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(mkdir:*)",
+      "Bash(npm install)",
+      "Bash(npm install:*)",
+      "Bash(npm run dev:*)",
+      "Bash(npm run build:*)",
+      "Bash(npm start)",
+      "Bash(npm run:*)",
+      "Bash(timeout 20 npm run dev)",
+      "Bash(node:*)",
+      "Bash(del \"C:\\Users\\dougs\\OneDrive\\Documents\\GitHub\\electron\\test-document.js\")",
+      "Bash(rm:*)",
+      "Bash(ls:*)",
+      "Bash(echo $APPDATA)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}

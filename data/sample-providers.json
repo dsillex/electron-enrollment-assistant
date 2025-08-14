@@ -1,0 +1,121 @@
+[
+  {
+    "id": "provider-1",
+    "firstName": "John",
+    "middleName": "M",
+    "lastName": "Smith",
+    "suffix": "MD",
+    "dateOfBirth": "1975-01-15",
+    "ssn": "***-**-6789",
+    "npi": "1234567890",
+    "licenseNumber": "CA12345",
+    "licenseState": "CA",
+    "licenseExpiration": "2025-12-31",
+    "deaNumber": "BS1234567",
+    "deaExpiration": "2026-06-30",
+    "specialties": ["Cardiology", "Internal Medicine"],
+    "boardCertifications": [
+      {
+        "board": "ABIM",
+        "specialty": "Cardiology",
+        "certificationDate": "2010-01-01",
+        "expirationDate": "2025-12-31"
+      }
+    ],
+    "email": "john.smith@example.com",
+    "phone": "(555) 123-4567",
+    "cellPhone": "(555) 987-6543",
+    "fax": "(555) 123-4568",
+    "practiceType": "group",
+    "groupName": "Heart Care Associates",
+    "taxId": "***-***4321",
+    "medicareNumber": "1234567890A",
+    "medicaidNumber": "CA1234567890",
+    "medicalSchool": {
+      "name": "Stanford University School of Medicine",
+      "degree": "MD",
+      "graduationYear": "2000"
+    },
+    "residency": {
+      "institution": "Johns Hopkins Hospital",
+      "specialty": "Internal Medicine",
+      "completionYear": "2003"
+    },
+    "fellowship": {
+      "institution": "Mayo Clinic",
+      "specialty": "Cardiology",
+      "completionYear": "2005"
+    },
+    "languages": ["English", "Spanish"],
+    "hospitalAffiliations": [
+      {
+        "name": "St. Mary's Hospital",
+        "privilegeStatus": "Active",
+        "startDate": "2005-06-01"
+      }
+    ],
+    "malpracticeInsurance": {
+      "carrier": "Medical Protective",
+      "policyNumber": "MP123456789",
+      "coverageAmount": "$1,000,000",
+      "expirationDate": "2025-12-31"
+    },
+    "isActive": true,
+    "createdAt": "2024-01-01T00:00:00.000Z",
+    "updatedAt": "2024-08-12T00:00:00.000Z",
+    "tags": ["cardiologist", "primary"]
+  },
+  {
+    "id": "provider-2",
+    "firstName": "Jane",
+    "lastName": "Doe",
+    "suffix": "MD",
+    "dateOfBirth": "1980-05-22",
+    "ssn": "***-**-1234",
+    "npi": "0987654321",
+    "licenseNumber": "NY54321",
+    "licenseState": "NY",
+    "licenseExpiration": "2026-03-15",
+    "specialties": ["Pediatrics"],
+    "boardCertifications": [
+      {
+        "board": "ABP",
+        "specialty": "Pediatrics",
+        "certificationDate": "2012-01-01",
+        "expirationDate": "2026-12-31"
+      }
+    ],
+    "email": "jane.doe@example.com",
+    "phone": "(555) 234-5678",
+    "practiceType": "solo",
+    "taxId": "***-***5678",
+    "medicalSchool": {
+      "name": "NYU School of Medicine",
+      "degree": "MD",
+      "graduationYear": "2005"
+    },
+    "residency": {
+      "institution": "Children's Hospital of Philadelphia",
+      "specialty": "Pediatrics",
+      "completionYear": "2008"
+    },
+    "languages": ["English"],
+    "hospitalAffiliations": [
+      {
+        "name": "Children's Medical Center",
+        "privilegeStatus": "Active",
+        "startDate": "2008-07-01"
+      }
+    ],
+    "malpracticeInsurance": {
+      "carrier": "NORCAL Mutual",
+      "policyNumber": "NC987654321",
+      "coverageAmount": "$1,000,000",
+      "expirationDate": "2025-06-30"
+    },
+    "isActive": true,
+    "createdAt": "2024-02-15T00:00:00.000Z",
+    "updatedAt": "2024-08-12T00:00:00.000Z",
+    "tags": ["pediatrician"]
+  }
+]

@@ -1,0 +1,1593 @@
+[
+  {
+    "id": "provider-wvkgxzil1-meahbcoa",
+    "firstName": "Andrea",
+    "middleName": "M",
+    "lastName": "Bertke",
+    "dateOfBirth": "1985-09-12",
+    "ssn": "293-84-2915",
+    "npi": "1295122596",
+    "licenseNumber": "APRN.CNP.17268",
+    "licenseState": "OH",
+    "licenseExpiration": "2025-10-31",
+    "deaNumber": "MB3527667",
+    "deaExpiration": "2027-07-31",
+    "specialties": [
+      "Certified Nurse Practitioner"
+    ],
+    "boardCertifications": [],
+    "caqhId": "13558676",
+    "providerType": "CNP",
+    "taxonomyCodes": [
+      "363LF0000X"
+    ],
+    "hireDate": "2015-08-04",
+    "medicareApprovalDate": "2015-11-04",
+    "medicaidApprovalDate": "2020-06-01",
+    "email": "",
+    "phone": "",
+    "practiceType": "group",
+    "taxId": "",
+    "medicaidNumber": "128133",
+    "medicalSchool": {
+      "degree": "CNP"
+    },
+    "languages": [
+      "English"
+    ],
+    "hospitalAffiliations": [],
+    "malpracticeInsurance": {
+      "carrier": "",
+      "policyNumber": "",
+      "coverageAmount": "",
+      "expirationDate": ""
+    },
+    "isActive": true,
+    "createdAt": "2025-08-13T21:25:07.691Z",
+    "updatedAt": "2025-08-13T21:25:07.691Z",
+    "tags": []
+  },
+  {
+    "id": "provider-gw1nvro0x-meahbcob",
+    "firstName": "Jennifer",
+    "lastName": "Richardson",
+    "dateOfBirth": "1980-10-26",
+    "ssn": "278-86-3246",
+    "npi": "1447891726",
+    "licenseNumber": "APRN.CNP.025688",
+    "licenseState": "OH",
+    "licenseExpiration": "2025-10-31",
+    "deaNumber": "MR5518456",
+    "deaExpiration": "2025-04-30",
+    "specialties": [
+      "Nurse Practitioner"
+    ],
+    "boardCertifications": [],
+    "caqhId": "14562707",
+    "providerType": "NP",
+    "taxonomyCodes": [
+      "363LF0000X"
+    ],
+    "hireDate": "2020-01-06",
+    "medicareApprovalDate": "2020-03-17",
+    "medicaidApprovalDate": "2019-10-08",
+    "email": "",
+    "phone": "",
+    "practiceType": "group",
+    "taxId": "",
+    "medicaidNumber": "376470",
+    "medicalSchool": {
+      "degree": "NP"
+    },
+    "languages": [
+      "English"
+    ],
+    "hospitalAffiliations": [],
+    "malpracticeInsurance": {
+      "carrier": "",
+      "policyNumber": "",
+      "coverageAmount": "",
+      "expirationDate": ""
+    },
+    "isActive": true,
+    "createdAt": "2025-08-13T21:25:07.691Z",
+    "updatedAt": "2025-08-13T21:25:07.691Z",
+    "tags": []
+  },
+  {
+    "id": "provider-hoi56i5ds-meahbcob",
+    "firstName": "Joseph",
+    "lastName": "Rizk",
+    "dateOfBirth": "1986-12-10",
+    "ssn": "352-76-9728",
+    "npi": "1740530393",
+    "licenseNumber": "30.026143999999999",
+    "licenseState": "OH",
+    "licenseExpiration": "2025-12-31",
+    "deaNumber": "FR3477026",
+    "deaExpiration": "2027-04-30",
+    "specialties": [
+      "General Dentistry"
+    ],
+    "boardCertifications": [],
+    "caqhId": "12428851",
+    "providerType": "DMD",
+    "taxonomyCodes": [
+      "122300000X"
+    ],
+    "hireDate": "2020-07-31",
+    "medicaidApprovalDate": "2020-07-29",
+    "email": "",
+    "phone": "",
+    "practiceType": "group",
+    "taxId": "",
+    "medicaidNumber": "407610",
+    "medicalSchool": {
+      "degree": "DMD"
+    },
+    "languages": [
+      "English"
+    ],
+    "hospitalAffiliations": [],
+    "malpracticeInsurance": {
+      "carrier": "",
+      "policyNumber": "",
+      "coverageAmount": "",
+      "expirationDate": ""
+    },
+    "isActive": true,
+    "createdAt": "2025-08-13T21:25:07.691Z",
+    "updatedAt": "2025-08-13T21:25:07.691Z",
+    "tags": []
+  },
+  {
+    "id": "provider-0n5uuwmok-meahbcob",
+    "firstName": "Laura",
+    "lastName": "Spasic",
+    "dateOfBirth": "1983-01-22",
+    "ssn": "277-88-2276",
+    "npi": "1588970974",
+    "licenseNumber": "APRN.CNP.11666",
+    "licenseState": "OH",
+    "licenseExpiration": "2025-10-31",
+    "deaNumber": "MS2237964",
+    "deaExpiration": "2025-02-28",
+    "specialties": [
+      "Certified Nurse Practitioner"
+    ],
+    "boardCertifications": [],
+    "caqhId": "12144137",
+    "providerType": "CNP",
+    "taxonomyCodes": [
+      "363LA2200X"
+    ],
+    "hireDate": "2017-06-20",
+    "medicareApprovalDate": "2017-06-20",
+    "medicaidApprovalDate": "2019-01-17",
+    "email": "",
+    "phone": "",
+    "practiceType": "group",
+    "taxId": "",
+    "medicaidNumber": "114097",
+    "medicalSchool": {
+      "degree": "CNP"
+    },
+    "languages": [
+      "English"
+    ],
+    "hospitalAffiliations": [],
+    "malpracticeInsurance": {
+      "carrier": "",
+      "policyNumber": "",
+      "coverageAmount": "",
+      "expirationDate": ""
+    },
+    "isActive": true,
+    "createdAt": "2025-08-13T21:25:07.691Z",
+    "updatedAt": "2025-08-13T21:25:07.691Z",
+    "tags": []
+  },
+  {
+    "id": "provider-zkbldydz8-meahbcoc",
+    "firstName": "Renee",
+    "lastName": "Leber",
+    "dateOfBirth": "1985-04-04",
+    "ssn": "292-90-4636",
+    "npi": "1083963441",
+    "licenseNumber": "I.1200037-SUPV",
+    "licenseState": "OH",
+    "licenseExpiration": "2026-01-20",
+    "deaNumber": null,
+    "specialties": [
+      "Social Work"
+    ],
+    "boardCertifications": [],
+    "caqhId": "12444093",
+    "providerType": "LISWS",
+    "taxonomyCodes": [
+      "1041C0700X"
+    ],
+    "hireDate": "2020-09-14",
+    "medicareApprovalDate": "2022-07-23",
+    "medicaidApprovalDate": "2021-02-01",
+    "email": "",
+    "phone": "",
+    "practiceType": "group",
+    "taxId": "",
+    "medicaidNumber": "155012",
+    "medicalSchool": {
+      "degree": "LISWS"
+    },
+    "languages": [
+      "English"
+    ],
+    "hospitalAffiliations": [],
+    "malpracticeInsurance": {
+      "carrier": "",
+      "policyNumber": "",
+      "coverageAmount": "",
+      "expirationDate": ""
+    },
+    "isActive": true,
+    "createdAt": "2025-08-13T21:25:07.692Z",
+    "updatedAt": "2025-08-13T21:25:07.692Z",
+    "tags": []
+  },
+  {
+    "id": "provider-31ma7vto4-meahbcoc",
+    "firstName": "Mary",
+    "lastName": "Peters",
+    "dateOfBirth": "1977-08-12",
+    "ssn": "285-78-0782",
+    "npi": "1760730949",
+    "licenseNumber": "APRN.CNP13596",
+    "licenseState": "OH",
+    "licenseExpiration": "2025-10-31",
+    "deaNumber": "MP2710778",
+    "deaExpiration": "2027-03-31",
+    "specialties": [
+      "Psych Nurse Practitioner"
+    ],
+    "boardCertifications": [],
+    "caqhId": "12428199",
+    "providerType": "PMHNP",
+    "taxonomyCodes": [
+      "363LP0808X"
+    ],
+    "hireDate": "2020-12-14",
+    "medicareApprovalDate": "2022-07-19",
+    "medicaidApprovalDate": "2020-01-01",
+    "email": "",
+    "phone": "",
+    "practiceType": "group",
+    "taxId": "",
+    "medicaidNumber": "70923",
+    "medicalSchool": {
+      "degree": "PMHNP"
+    },
+    "languages": [
+      "English"
+    ],
+    "hospitalAffiliations": [],
+    "malpracticeInsurance": {
+      "carrier": "",
+      "policyNumber": "",
+      "coverageAmount": "",
+      "expirationDate": ""
+    },
+    "isActive": true,
+    "createdAt": "2025-08-13T21:25:07.692Z",
+    "updatedAt": "2025-08-13T21:25:07.692Z",
+    "tags": []
+  },
+  {
+    "id": "provider-1habgv7kf-meahbcoc",
+    "firstName": "Christy",
+    "lastName": "Cox",
+    "dateOfBirth": "1973-10-09",
+    "ssn": "295-88-8061",
+    "npi": "1366033599",
+    "licenseNumber": "APRN.CNP.0028412",
+    "licenseState": "OH",
+    "licenseExpiration": "2025-10-31",
+    "deaNumber": "MC6323947",
+    "deaExpiration": "2026-08-31",
+    "specialties": [
+      "Psych Nurse Practitioner"
+    ],
+    "boardCertifications": [],
+    "caqhId": "15076726",
+    "providerType": "PMHNP",
+    "taxonomyCodes": [
+      "2084P0800X"
+    ],
+    "hireDate": "2021-03-08",
+    "medicareApprovalDate": "2021-03-01",
+    "medicaidApprovalDate": "2021-02-16",
+    "email": "",
+    "phone": "",
+    "practiceType": "group",
+    "taxId": "",
+    "medicaidNumber": "437241",
+    "medicalSchool": {
+      "degree": "PMHNP"
+    },
+    "languages": [
+      "English"
+    ],
+    "hospitalAffiliations": [],
+    "malpracticeInsurance": {
+      "carrier": "",
+      "policyNumber": "",
+      "coverageAmount": "",
+      "expirationDate": ""
+    },
+    "isActive": true,
+    "createdAt": "2025-08-13T21:25:07.692Z",
+    "updatedAt": "2025-08-13T21:25:07.692Z",
+    "tags": []
+  },
+  {
+    "id": "provider-v4dpn78k3-meahbcoc",
+    "firstName": "Julie",
+    "lastName": "Shedron",
+    "dateOfBirth": "1981-03-17",
+    "ssn": "294-86-2217",
+    "npi": "1851557482",
+    "licenseNumber": "I.1000297-SUPV",
+    "licenseState": "OH",
+    "licenseExpiration": "2024-09-29",
+    "deaNumber": null,
+    "specialties": [
+      "Social Work"
+    ],
+    "boardCertifications": [],
+    "caqhId": "12100831",
+    "providerType": "LISW",
+    "taxonomyCodes": [
+      "1041C0700X"
+    ],
+    "hireDate": "2021-06-21",
+    "medicareApprovalDate": "2021-03-22",
+    "medicaidApprovalDate": "2021-06-01",
+    "email": "",
+    "phone": "",
+    "practiceType": "group",
+    "taxId": "",
+    "medicaidNumber": "191241",
+    "medicalSchool": {
+      "degree": "LISW"
+    },
+    "languages": [
+      "English"
+    ],
+    "hospitalAffiliations": [],
+    "malpracticeInsurance": {
+      "carrier": "",
+      "policyNumber": "",
+      "coverageAmount": "",
+      "expirationDate": ""
+    },
+    "isActive": true,
+    "createdAt": "2025-08-13T21:25:07.692Z",
+    "updatedAt": "2025-08-13T21:25:07.692Z",
+    "tags": []
+  },
+  {
+    "id": "provider-4l0de5zk0-meahbcoc",
+    "firstName": "Alexa",
+    "middleName": "R",
+    "lastName": "Murray",
+    "dateOfBirth": "1993-04-05",
+    "ssn": "275-96-9647",
+    "npi": "1922587948",
+    "licenseNumber": "APRN.CNP.022960",
+    "licenseState": "OH",
+    "licenseExpiration": "2023-10-31",
+    "deaNumber": "MM5055593",
+    "deaExpiration": "2025-01-31",
+    "specialties": [
+      "Certified Nurse Practitioner"
+    ],
+    "boardCertifications": [],
+    "caqhId": "14369542",
+    "providerType": "CNP",
+    "taxonomyCodes": [
+      "363LF0000X"
+    ],
+    "hireDate": "2021-11-01",
+    "medicareApprovalDate": "2022-07-27",
+    "medicaidApprovalDate": "2018-08-19",
+    "email": "",
+    "phone": "",
+    "practiceType": "group",
+    "taxId": "",
+    "medicaidNumber": "333182",
+    "medicalSchool": {
+      "degree": "CNP"
+    },
+    "languages": [
+      "English"
+    ],
+    "hospitalAffiliations": [],
+    "malpracticeInsurance": {
+      "carrier": "",
+      "policyNumber": "",
+      "coverageAmount": "",
+      "expirationDate": ""
+    },
+    "isActive": true,
+    "createdAt": "2025-08-13T21:25:07.692Z",
+    "updatedAt": "2025-08-13T21:25:07.692Z",
+    "tags": []
+  },
+  {
+    "id": "provider-5dk83u5sx-meahbcoc",
+    "firstName": "Fiorella",
+    "middleName": "Lamas",
+    "lastName": "Castillo",
+    "dateOfBirth": "1989-07-19",
+    "ssn": "720-80-9211",
+    "npi": "1669024352",
+    "licenseNumber": "30.026658999999999",
+    "licenseState": "OH",
+    "licenseExpiration": "2025-12-31",
+    "deaNumber": "FLO818231",
+    "deaExpiration": "2027-03-31",
+    "specialties": [
+      "General Dentistry"
+    ],
+    "boardCertifications": [],
+    "caqhId": "15281997",
+    "providerType": "DMD",
+    "taxonomyCodes": [
+      "1223G0001X"
+    ],
+    "hireDate": "2022-07-06",
+    "medicaidApprovalDate": "2021-09-10",
+    "email": "",
+    "phone": "",
+    "practiceType": "group",
+    "taxId": "",
+    "medicaidNumber": "461911",
+    "medicalSchool": {
+      "degree": "DMD"
+    },
+    "languages": [
+      "English"
+    ],
+    "hospitalAffiliations": [],
+    "malpracticeInsurance": {
+      "carrier": "",
+      "policyNumber": "",
+      "coverageAmount": "",
+      "expirationDate": ""
+    },
+    "isActive": true,
+    "createdAt": "2025-08-13T21:25:07.692Z",
+    "updatedAt": "2025-08-13T21:25:07.692Z",
+    "tags": []
+  },
+  {
+    "id": "provider-91c7m2dvf-meahbcoc",
+    "firstName": "Agnish",
+    "middleName": "M",
+    "lastName": "Gholekar",
+    "dateOfBirth": "1992-01-15",
+    "ssn": "767-25-7713",
+    "npi": "1295387983",
+    "licenseNumber": "30.026675000000001",
+    "licenseState": "OH",
+    "licenseExpiration": "2025-12-31",
+    "deaNumber": "FG0904551",
+    "deaExpiration": "2027-09-30",
+    "specialties": [
+      "General Dentistry"
+    ],
+    "boardCertifications": [],
+    "caqhId": "14857643",
+    "providerType": "DMD",
+    "taxonomyCodes": [
+      "1223G0001X"
+    ],
+    "hireDate": "2022-06-27",
+    "medicaidApprovalDate": "2021-10-01",
+    "email": "",
+    "phone": "",
+    "practiceType": "group",
+    "taxId": "",
+    "medicaidNumber": "462082",
+    "medicalSchool": {
+      "degree": "DMD"
+    },
+    "languages": [
+      "English"
+    ],
+    "hospitalAffiliations": [],
+    "malpracticeInsurance": {
+      "carrier": "",
+      "policyNumber": "",
+      "coverageAmount": "",
+      "expirationDate": ""
+    },
+    "isActive": true,
+    "createdAt": "2025-08-13T21:25:07.692Z",
+    "updatedAt": "2025-08-13T21:25:07.692Z",
+    "tags": []
+  },
+  {
+    "id": "provider-0reujovw5-meahbcoc",
+    "firstName": "Cheri",
+    "middleName": "L",
+    "lastName": "Slingwine",
+    "dateOfBirth": "1974-12-25",
+    "ssn": "296-86-7481",
+    "npi": "1881340966",
+    "licenseNumber": "APRN.CNP.0030874",
+    "licenseState": "OH",
+    "licenseExpiration": "2025-10-31",
+    "deaNumber": "MS7129340",
+    "deaExpiration": "2025-02-28",
+    "specialties": [
+      "Psych Nurse Practitioner"
+    ],
+    "boardCertifications": [],
+    "caqhId": "15530164",
+    "providerType": "PMHNP",
+    "taxonomyCodes": [
+      "363LP0808X"
+    ],
+    "hireDate": "2022-04-25",
+    "medicareApprovalDate": "2022-04-25",
+    "medicaidApprovalDate": "2021-03-30",
+    "email": "",
+    "phone": "",
+    "practiceType": "group",
+    "taxId": "",
+    "medicaidNumber": "480946",
+    "medicalSchool": {
+      "degree": "PMHNP"
+    },
+    "languages": [
+      "English"
+    ],
+    "hospitalAffiliations": [],
+    "malpracticeInsurance": {
+      "carrier": "",
+      "policyNumber": "",
+      "coverageAmount": "",
+      "expirationDate": ""
+    },
+    "isActive": true,
+    "createdAt": "2025-08-13T21:25:07.692Z",
+    "updatedAt": "2025-08-13T21:25:07.692Z",
+    "tags": []
+  },
+  {
+    "id": "provider-9rfp3r3cl-meahbcoc",
+    "firstName": "Kimberly",
+    "middleName": "J",
+    "lastName": "Ollom",
+    "dateOfBirth": "1978-11-14",
+    "ssn": "297-86-3352",
+    "npi": "1033848734",
+    "licenseNumber": "I.1200561-SUPV",
+    "licenseState": "OH",
+    "licenseExpiration": "2026-05-25",
+    "deaNumber": null,
+    "specialties": [
+      "Social Work"
+    ],
+    "boardCertifications": [],
+    "caqhId": "15596266",
+    "providerType": "LISWS",
+    "taxonomyCodes": [
+      "104100000X"
+    ],
+    "hireDate": "2022-07-18",
+    "medicareApprovalDate": "2022-07-18",
+    "medicaidApprovalDate": "2022-06-08",
+    "email": "",
+    "phone": "",
+    "practiceType": "group",
+    "taxId": "",
+    "medicaidNumber": "492370",
+    "medicalSchool": {
+      "degree": "LISWS"
+    },
+    "languages": [
+      "English"
+    ],
+    "hospitalAffiliations": [],
+    "malpracticeInsurance": {
+      "carrier": "",
+      "policyNumber": "",
+      "coverageAmount": "",
+      "expirationDate": ""
+    },
+    "isActive": true,
+    "createdAt": "2025-08-13T21:25:07.692Z",
+    "updatedAt": "2025-08-13T21:25:07.692Z",
+    "tags": []
+  },
+  {
+    "id": "provider-w4t9oaqvf-meahbcoc",
+    "firstName": "Katelyn",
+    "middleName": "M",
+    "lastName": "Miller",
+    "dateOfBirth": "1990-11-16",
+    "ssn": "294-92-8753",
+    "npi": "1811398522",
+    "licenseNumber": "1.1801022-SUPV",
+    "licenseState": "OH",
+    "licenseExpiration": "2026-06-07",
+    "deaNumber": null,
+    "specialties": [
+      "Social Work"
+    ],
+    "boardCertifications": [],
+    "caqhId": "15659116",
+    "providerType": "LISWS",
+    "taxonomyCodes": [
+      "1041C0700X"
+    ],
+    "hireDate": "2022-08-29",
+    "medicareApprovalDate": "2022-08-01",
+    "medicaidApprovalDate": "2022-07-29",
+    "email": "",
+    "phone": "",
+    "practiceType": "group",
+    "taxId": "",
+    "medicaidNumber": "499994",
+    "medicalSchool": {
+      "degree": "LISWS"
+    },
+    "languages": [
+      "English"
+    ],
+    "hospitalAffiliations": [],
+    "malpracticeInsurance": {
+      "carrier": "",
+      "policyNumber": "",
+      "coverageAmount": "",
+      "expirationDate": ""
+    },
+    "isActive": true,
+    "createdAt": "2025-08-13T21:25:07.692Z",
+    "updatedAt": "2025-08-13T21:25:07.692Z",
+    "tags": []
+  },
+  {
+    "id": "provider-sdnv9wodh-meahbcoc",
+    "firstName": "Kip",
+    "middleName": "W",
+    "lastName": "Soviak",
+    "dateOfBirth": "1971-12-24",
+    "ssn": "272-76-6947",
+    "npi": "1063147445",
+    "licenseNumber": "APRN.CNP.0031836",
+    "licenseState": "OH",
+    "licenseExpiration": "2025-10-31",
+    "deaNumber": "MS7410032",
+    "deaExpiration": "2025-02-28",
+    "specialties": [
+      "Psych Nurse Practitioner"
+    ],
+    "boardCertifications": [],
+    "caqhId": "15716704",
+    "providerType": "PMHNP",
+    "taxonomyCodes": [
+      "363LP0808X"
+    ],
+    "hireDate": "2023-06-27",
+    "medicareApprovalDate": "2022-09-01",
+    "medicaidApprovalDate": "2023-10-17",
+    "email": "",
+    "phone": "",
+    "practiceType": "group",
+    "taxId": "",
+    "medicaidNumber": "5665",
+    "medicalSchool": {
+      "degree": "PMHNP"
+    },
+    "languages": [
+      "English"
+    ],
+    "hospitalAffiliations": [],
+    "malpracticeInsurance": {
+      "carrier": "",
+      "policyNumber": "",
+      "coverageAmount": "",
+      "expirationDate": ""
+    },
+    "isActive": true,
+    "createdAt": "2025-08-13T21:25:07.692Z",
+    "updatedAt": "2025-08-13T21:25:07.692Z",
+    "tags": []
+  },
+  {
+    "id": "provider-wvra33elv-meahbcoc",
+    "firstName": "Leslie",
+    "middleName": "A",
+    "lastName": "Johnson",
+    "dateOfBirth": "1995-12-08",
+    "ssn": "417-45-9081",
+    "npi": "1003540378",
+    "licenseNumber": "LD.09820",
+    "licenseState": "OH",
+    "licenseExpiration": "2026-07-05",
+    "deaNumber": null,
+    "specialties": [
+      "Dietitian"
+    ],
+    "boardCertifications": [],
+    "caqhId": "15665043",
+    "providerType": "RD",
+    "taxonomyCodes": [
+      "133V00000X"
+    ],
+    "hireDate": "2022-06-13",
+    "medicareApprovalDate": "2022-07-05",
+    "medicaidApprovalDate": "2022-07-13",
+    "email": "",
+    "phone": "",
+    "practiceType": "group",
+    "taxId": "",
+    "medicaidNumber": "496724",
+    "medicalSchool": {
+      "degree": "RD"
+    },
+    "languages": [
+      "English"
+    ],
+    "hospitalAffiliations": [],
+    "malpracticeInsurance": {
+      "carrier": "",
+      "policyNumber": "",
+      "coverageAmount": "",
+      "expirationDate": ""
+    },
+    "isActive": true,
+    "createdAt": "2025-08-13T21:25:07.692Z",
+    "updatedAt": "2025-08-13T21:25:07.692Z",
+    "tags": []
+  },
+  {
+    "id": "provider-xrxycac8s-meahbcoc",
+    "firstName": "Stephanie",
+    "middleName": "J",
+    "lastName": "Breault",
+    "dateOfBirth": "1980-04-16",
+    "ssn": "440-78-9855",
+    "npi": "1699133751",
+    "licenseNumber": "APRN.CNP.18725",
+    "licenseState": "OH",
+    "licenseExpiration": "2025-10-31",
+    "deaNumber": "MB3821039",
+    "deaExpiration": "2027-07-31",
+    "specialties": [
+      "Nurse Practitioner"
+    ],
+    "boardCertifications": [],
+    "caqhId": "13818274",
+    "providerType": "NP",
+    "taxonomyCodes": [
+      "363LF0000X"
+    ],
+    "hireDate": "2023-03-06",
+    "medicareApprovalDate": "2023-03-06",
+    "medicaidApprovalDate": "2023-01-03",
+    "email": "",
+    "phone": "",
+    "practiceType": "group",
+    "taxId": "",
+    "medicaidNumber": "166215",
+    "medicalSchool": {
+      "degree": "NP"
+    },
+    "languages": [
+      "English"
+    ],
+    "hospitalAffiliations": [],
+    "malpracticeInsurance": {
+      "carrier": "",
+      "policyNumber": "",
+      "coverageAmount": "",
+      "expirationDate": ""
+    },
+    "isActive": true,
+    "createdAt": "2025-08-13T21:25:07.692Z",
+    "updatedAt": "2025-08-13T21:25:07.692Z",
+    "tags": []
+  },
+  {
+    "id": "provider-95ev6jil5-meahbcoc",
+    "firstName": "Aaron",
+    "middleName": "P",
+    "lastName": "Martinez",
+    "dateOfBirth": "1988-09-22",
+    "ssn": "522-67-7589",
+    "npi": "1740785013",
+    "licenseNumber": "34.014759",
+    "licenseState": "OH",
+    "licenseExpiration": "2026-09-01",
+    "deaNumber": "FM1735870",
+    "deaExpiration": "2025-01-31",
+    "specialties": [
+      "Family Practice"
+    ],
+    "boardCertifications": [],
+    "caqhId": "15201851",
+    "providerType": "DO",
+    "taxonomyCodes": [
+      "207Q00000X"
+    ],
+    "hireDate": "2023-07-10",
+    "medicareApprovalDate": "2023-06-02",
+    "medicaidApprovalDate": "2020-09-01",
+    "email": "",
+    "phone": "",
+    "practiceType": "group",
+    "taxId": "",
+    "medicaidNumber": "454936",
+    "medicalSchool": {
+      "degree": "DO"
+    },
+    "languages": [
+      "English"
+    ],
+    "hospitalAffiliations": [],
+    "malpracticeInsurance": {
+      "carrier": "",
+      "policyNumber": "",
+      "coverageAmount": "",
+      "expirationDate": ""
+    },
+    "isActive": true,
+    "createdAt": "2025-08-13T21:25:07.692Z",
+    "updatedAt": "2025-08-13T21:25:07.692Z",
+    "tags": []
+  },
+  {
+    "id": "provider-e5oikyc8g-meahbcoc",
+    "firstName": "Joseph",
+    "lastName": "Veliz",
+    "dateOfBirth": "1976-06-13",
+    "ssn": "284-70-1886",
+    "npi": "1770771131",
+    "licenseNumber": "I0700301-SUPV",
+    "licenseState": "OH",
+    "licenseExpiration": "2025-09-27",
+    "deaNumber": null,
+    "specialties": [
+      "Licensed Independent Social Worker"
+    ],
+    "boardCertifications": [],
+    "caqhId": "12224660",
+    "providerType": "LISW",
+    "taxonomyCodes": [
+      "104100000X"
+    ],
+    "hireDate": "2024-04-29",
+    "medicareApprovalDate": "2024-04-07",
+    "medicaidApprovalDate": "2017-04-27",
+    "email": "",
+    "phone": "",
+    "practiceType": "group",
+    "taxId": "",
+    "medicaidNumber": "278516",
+    "medicalSchool": {
+      "degree": "LISW"
+    },
+    "languages": [
+      "English"
+    ],
+    "hospitalAffiliations": [],
+    "malpracticeInsurance": {
+      "carrier": "",
+      "policyNumber": "",
+      "coverageAmount": "",
+      "expirationDate": ""
+    },
+    "isActive": true,
+    "createdAt": "2025-08-13T21:25:07.692Z",
+    "updatedAt": "2025-08-13T21:25:07.692Z",
+    "tags": []
+  },
+  {
+    "id": "provider-p13fvf6ib-meahbcoc",
+    "firstName": "Jasmina",
+    "lastName": "Saric",
+    "dateOfBirth": "1977-10-18",
+    "ssn": "290-15-5848",
+    "npi": "1881052272",
+    "licenseNumber": "30.025581",
+    "licenseState": "OH",
+    "licenseExpiration": "2025-12-31",
+    "deaNumber": "FS6321032",
+    "deaExpiration": "2025-02-28",
+    "specialties": [
+      "Doctorate of Dental Medicine"
+    ],
+    "boardCertifications": [],
+    "caqhId": "15831915",
+    "providerType": "DMD",
+    "taxonomyCodes": [
+      "122300000X"
+    ],
+    "hireDate": "2024-07-15",
+    "medicaidApprovalDate": "2018-09-13",
+    "email": "",
+    "phone": "",
+    "practiceType": "group",
+    "taxId": "",
+    "medicaidNumber": "315145",
+    "medicalSchool": {
+      "degree": "DMD"
+    },
+    "languages": [
+      "English"
+    ],
+    "hospitalAffiliations": [],
+    "malpracticeInsurance": {
+      "carrier": "",
+      "policyNumber": "",
+      "coverageAmount": "",
+      "expirationDate": ""
+    },
+    "isActive": true,
+    "createdAt": "2025-08-13T21:25:07.693Z",
+    "updatedAt": "2025-08-13T21:25:07.693Z",
+    "tags": []
+  },
+  {
+    "id": "provider-9wsvv2lin-meahbcod",
+    "firstName": "Leslie",
+    "lastName": "Neuberger",
+    "dateOfBirth": "1967-09-09",
+    "ssn": "278-62-8840",
+    "npi": "1902541956",
+    "licenseNumber": "APRN.CNP.0031286",
+    "licenseState": "OH",
+    "licenseExpiration": "2027-03-18",
+    "deaNumber": "MN7234658",
+    "deaExpiration": "2027-10-31",
+    "specialties": [
+      "Psych Nurse Practitioner"
+    ],
+    "boardCertifications": [],
+    "caqhId": "15573305",
+    "providerType": "PMHNP",
+    "taxonomyCodes": [
+      "363LP0808X"
+    ],
+    "hireDate": "2024-12-02",
+    "medicareApprovalDate": "2025-01-03",
+    "medicaidApprovalDate": "2022-05-04",
+    "email": "",
+    "phone": "",
+    "practiceType": "group",
+    "taxId": "",
+    "medicaidNumber": "488294",
+    "medicalSchool": {
+      "degree": "PMHNP"
+    },
+    "languages": [
+      "English"
+    ],
+    "hospitalAffiliations": [],
+    "malpracticeInsurance": {
+      "carrier": "",
+      "policyNumber": "",
+      "coverageAmount": "",
+      "expirationDate": ""
+    },
+    "isActive": true,
+    "createdAt": "2025-08-13T21:25:07.693Z",
+    "updatedAt": "2025-08-13T21:25:07.693Z",
+    "tags": []
+  },
+  {
+    "id": "provider-o9t8jp730-meahbcod",
+    "firstName": "Kaitlin",
+    "middleName": "E",
+    "lastName": "Schwerer",
+    "dateOfBirth": "1988-11-08",
+    "ssn": "273-90-9291",
+    "npi": "1659767812",
+    "licenseNumber": "34.012486000000003",
+    "licenseState": "OH",
+    "licenseExpiration": "2026-01-01",
+    "deaNumber": "FS7770476",
+    "deaExpiration": "2027-02-27",
+    "specialties": [
+      "Family Practice"
+    ],
+    "boardCertifications": [],
+    "caqhId": "14302537",
+    "providerType": "DO",
+    "taxonomyCodes": [
+      "207Q00000X"
+    ],
+    "hireDate": "2022-07-01",
+    "medicareApprovalDate": "2023-07-01",
+    "medicaidApprovalDate": "2017-08-08",
+    "email": "",
+    "phone": "",
+    "practiceType": "group",
+    "taxId": "",
+    "medicaidNumber": "306875",
+    "medicalSchool": {
+      "degree": "DO"
+    },
+    "languages": [
+      "English"
+    ],
+    "hospitalAffiliations": [],
+    "malpracticeInsurance": {
+      "carrier": "",
+      "policyNumber": "",
+      "coverageAmount": "",
+      "expirationDate": ""
+    },
+    "isActive": true,
+    "createdAt": "2025-08-13T21:25:07.693Z",
+    "updatedAt": "2025-08-13T21:25:07.693Z",
+    "tags": []
+  },
+  {
+    "id": "provider-adau6xd00-meahbcod",
+    "firstName": "Matthew",
+    "lastName": "Braniecki",
+    "dateOfBirth": "1986-05-28",
+    "ssn": "363-02-4799",
+    "npi": "1992062012",
+    "licenseNumber": "34.011656000000002",
+    "licenseState": "OH",
+    "licenseExpiration": "2025-07-01",
+    "deaNumber": "FB5121607",
+    "deaExpiration": "2026-07-31",
+    "specialties": [
+      "Family Practice"
+    ],
+    "boardCertifications": [],
+    "caqhId": "13544743",
+    "providerType": "DO",
+    "taxonomyCodes": [
+      "207Q00000X"
+    ],
+    "hireDate": "2019-10-01",
+    "medicareApprovalDate": "2019-10-06",
+    "medicaidApprovalDate": "2015-01-22",
+    "email": "",
+    "phone": "",
+    "practiceType": "group",
+    "taxId": "",
+    "medicaidNumber": "121443",
+    "medicalSchool": {
+      "degree": "DO"
+    },
+    "languages": [
+      "English"
+    ],
+    "hospitalAffiliations": [],
+    "malpracticeInsurance": {
+      "carrier": "",
+      "policyNumber": "",
+      "coverageAmount": "",
+      "expirationDate": ""
+    },
+    "isActive": true,
+    "createdAt": "2025-08-13T21:25:07.693Z",
+    "updatedAt": "2025-08-13T21:25:07.693Z",
+    "tags": []
+  },
+  {
+    "id": "provider-v7q8fi30u-meahbcod",
+    "firstName": "Paul",
+    "middleName": "J",
+    "lastName": "Bruner",
+    "dateOfBirth": "1961-03-21",
+    "ssn": "585-21-3718",
+    "npi": "1184679995",
+    "licenseNumber": "34.004623000000002",
+    "licenseState": "OH",
+    "licenseExpiration": "2025-07-01",
+    "deaNumber": "BB1589805",
+    "deaExpiration": "2027-07-31",
+    "specialties": [
+      "Family Practice"
+    ],
+    "boardCertifications": [],
+    "caqhId": "10789161",
+    "providerType": "DO",
+    "taxonomyCodes": [
+      "207Q00000X"
+    ],
+    "hireDate": "2017-12-01",
+    "medicareApprovalDate": "2017-12-01",
+    "medicaidApprovalDate": "2017-12-01",
+    "email": "",
+    "phone": "",
+    "practiceType": "group",
+    "taxId": "",
+    "medicaidNumber": "107575",
+    "medicalSchool": {
+      "degree": "DO"
+    },
+    "languages": [
+      "English"
+    ],
+    "hospitalAffiliations": [],
+    "malpracticeInsurance": {
+      "carrier": "",
+      "policyNumber": "",
+      "coverageAmount": "",
+      "expirationDate": ""
+    },
+    "isActive": true,
+    "createdAt": "2025-08-13T21:25:07.693Z",
+    "updatedAt": "2025-08-13T21:25:07.693Z",
+    "tags": []
+  },
+  {
+    "id": "provider-pmforzmcz-meahbcod",
+    "firstName": "Kari",
+    "lastName": "Ketvertis",
+    "dateOfBirth": "1973-02-23",
+    "ssn": "272-82-1702",
+    "npi": "1134191471",
+    "licenseNumber": "35.086418999999999",
+    "licenseState": "OH",
+    "licenseExpiration": "2026-09-04",
+    "deaNumber": "BK7664178",
+    "deaExpiration": "2025-12-31",
+    "specialties": [
+      "Family Practice"
+    ],
+    "boardCertifications": [],
+    "caqhId": "11467508",
+    "providerType": "MD",
+    "taxonomyCodes": [
+      "207Q00000X"
+    ],
+    "hireDate": "2006-01-01",
+    "medicareApprovalDate": "2008-12-16",
+    "medicaidApprovalDate": "2013-04-15",
+    "email": "",
+    "phone": "",
+    "practiceType": "group",
+    "taxId": "",
+    "medicareNumber": "4165855",
+    "medicaidNumber": "2599700",
+    "medicalSchool": {
+      "degree": "MD"
+    },
+    "languages": [
+      "English"
+    ],
+    "hospitalAffiliations": [],
+    "malpracticeInsurance": {
+      "carrier": "",
+      "policyNumber": "",
+      "coverageAmount": "",
+      "expirationDate": ""
+    },
+    "isActive": true,
+    "createdAt": "2025-08-13T21:25:07.693Z",
+    "updatedAt": "2025-08-13T21:25:07.693Z",
+    "tags": []
+  },
+  {
+    "id": "provider-5rxsegyai-meahbcod",
+    "firstName": "Larry",
+    "middleName": "E Robinson",
+    "lastName": "Jr.",
+    "dateOfBirth": "1976-03-20",
+    "ssn": "379-94-8966",
+    "npi": "1538144357",
+    "licenseNumber": "34.008626999999997",
+    "licenseState": "OH",
+    "licenseExpiration": "2026-04-01",
+    "deaNumber": "BR9440645",
+    "deaExpiration": "2026-04-30",
+    "specialties": [
+      "Family Practice"
+    ],
+    "boardCertifications": [],
+    "caqhId": "11866134",
+    "providerType": "DO",
+    "taxonomyCodes": [
+      "207Q00000X"
+    ],
+    "hireDate": "2009-07-01",
+    "medicareApprovalDate": "2021-06-11",
+    "medicaidApprovalDate": "2008-08-10",
+    "email": "",
+    "phone": "",
+    "practiceType": "group",
+    "taxId": "",
+    "medicaidNumber": "2890519",
+    "medicalSchool": {
+      "degree": "DO"
+    },
+    "languages": [
+      "English"
+    ],
+    "hospitalAffiliations": [],
+    "malpracticeInsurance": {
+      "carrier": "",
+      "policyNumber": "",
+      "coverageAmount": "",
+      "expirationDate": ""
+    },
+    "isActive": true,
+    "createdAt": "2025-08-13T21:25:07.693Z",
+    "updatedAt": "2025-08-13T21:25:07.693Z",
+    "tags": []
+  },
+  {
+    "id": "provider-gxtyl8f5t-meahbcod",
+    "firstName": "Eric",
+    "lastName": "Mast",
+    "dateOfBirth": "1968-04-28",
+    "ssn": "314-68-2788",
+    "npi": "1437156296",
+    "licenseNumber": "34.006385999999999",
+    "licenseState": "OH",
+    "licenseExpiration": "2026-07-01",
+    "deaNumber": "BM4819213",
+    "deaExpiration": "2026-01-31",
+    "specialties": [
+      "Family Practice"
+    ],
+    "boardCertifications": [],
+    "caqhId": "10795622",
+    "providerType": "DO",
+    "taxonomyCodes": [
+      "207Q00000X"
+    ],
+    "hireDate": "2003-07-01",
+    "medicareApprovalDate": "2008-12-16",
+    "medicaidApprovalDate": "2010-03-01",
+    "email": "",
+    "phone": "",
+    "practiceType": "group",
+    "taxId": "",
+    "medicareNumber": "802492",
+    "medicaidNumber": "257985",
+    "medicalSchool": {
+      "degree": "DO"
+    },
+    "languages": [
+      "English"
+    ],
+    "hospitalAffiliations": [],
+    "malpracticeInsurance": {
+      "carrier": "",
+      "policyNumber": "",
+      "coverageAmount": "",
+      "expirationDate": ""
+    },
+    "isActive": true,
+    "createdAt": "2025-08-13T21:25:07.693Z",
+    "updatedAt": "2025-08-13T21:25:07.693Z",
+    "tags": []
+  },
+  {
+    "id": "provider-e78yjrcme-meahbcod",
+    "firstName": "Timothy",
+    "middleName": "L",
+    "lastName": "Cutler",
+    "dateOfBirth": "1992-12-31",
+    "ssn": "271-96-5621",
+    "npi": "1184289902",
+    "licenseNumber": "34.014794999999999",
+    "licenseState": "OH",
+    "licenseExpiration": "2026-09-29",
+    "deaNumber": "FC1545904",
+    "deaExpiration": "2025-08-31",
+    "specialties": [
+      "Family Practice"
+    ],
+    "boardCertifications": [],
+    "caqhId": "15202834",
+    "providerType": "DO",
+    "taxonomyCodes": [
+      "207Q00000X"
+    ],
+    "hireDate": "2020-09-14",
+    "medicaidApprovalDate": "2020-09-29",
+    "email": "",
+    "phone": "",
+    "practiceType": "group",
+    "taxId": "",
+    "medicaidNumber": "455263",
+    "medicalSchool": {
+      "degree": "DO"
+    },
+    "languages": [
+      "English"
+    ],
+    "hospitalAffiliations": [],
+    "malpracticeInsurance": {
+      "carrier": "",
+      "policyNumber": "",
+      "coverageAmount": "",
+      "expirationDate": ""
+    },
+    "isActive": true,
+    "createdAt": "2025-08-13T21:25:07.693Z",
+    "updatedAt": "2025-08-13T21:25:07.693Z",
+    "tags": []
+  },
+  {
+    "id": "provider-xav3efm27-meahbcod",
+    "firstName": "Anthony",
+    "lastName": "Schalk",
+    "dateOfBirth": "1998-12-28",
+    "ssn": "",
+    "npi": "1700305489",
+    "licenseNumber": "C.2103246",
+    "licenseState": "OH",
+    "licenseExpiration": "2023-03-26",
+    "deaNumber": null,
+    "specialties": [
+      "Licensed Professional Counselor"
+    ],
+    "boardCertifications": [],
+    "caqhId": "15831915",
+    "providerType": "LPC",
+    "taxonomyCodes": [
+      "101YM0800X"
+    ],
+    "hireDate": "2023-02-06",
+    "medicareApprovalDate": "2024-01-24",
+    "medicaidApprovalDate": "2021-03-26",
+    "email": "",
+    "phone": "",
+    "practiceType": "group",
+    "taxId": "",
+    "medicaidNumber": "437890",
+    "medicalSchool": {
+      "degree": "LPC"
+    },
+    "languages": [
+      "English"
+    ],
+    "hospitalAffiliations": [],
+    "malpracticeInsurance": {
+      "carrier": "",
+      "policyNumber": "",
+      "coverageAmount": "",
+      "expirationDate": ""
+    },
+    "isActive": true,
+    "createdAt": "2025-08-13T21:25:07.693Z",
+    "updatedAt": "2025-08-13T21:25:07.693Z",
+    "tags": []
+  },
+  {
+    "id": "provider-2g1a7cd3j-meahbcod",
+    "firstName": "Kendall",
+    "middleName": "Rae",
+    "lastName": "Yuhas",
+    "dateOfBirth": "1994-10-03",
+    "ssn": "273-98-5664",
+    "npi": "1063233187",
+    "licenseNumber": "LD.09387",
+    "licenseState": "OH",
+    "licenseExpiration": "2025-03-25",
+    "deaNumber": null,
+    "specialties": [
+      "Licensed Dietitian"
+    ],
+    "boardCertifications": [],
+    "caqhId": "16335061",
+    "providerType": "LD",
+    "taxonomyCodes": [],
+    "hireDate": "2024-11-11",
+    "medicareApprovalDate": "2024-11-11",
+    "medicaidApprovalDate": "2024-10-21",
+    "email": "",
+    "phone": "",
+    "practiceType": "group",
+    "taxId": "",
+    "medicaidNumber": "81480",
+    "medicalSchool": {
+      "degree": "LD"
+    },
+    "languages": [
+      "English"
+    ],
+    "hospitalAffiliations": [],
+    "malpracticeInsurance": {
+      "carrier": "",
+      "policyNumber": "",
+      "coverageAmount": "",
+      "expirationDate": ""
+    },
+    "isActive": true,
+    "createdAt": "2025-08-13T21:25:07.693Z",
+    "updatedAt": "2025-08-13T21:25:07.693Z",
+    "tags": []
+  },
+  {
+    "id": "provider-880kg86o1-meahbcod",
+    "firstName": "Tracey",
+    "lastName": "Hylton",
+    "dateOfBirth": "1971-12-21",
+    "ssn": "299-66-1587",
+    "npi": "1679173785",
+    "licenseNumber": "APRN.CNP.025398",
+    "licenseState": "OH",
+    "licenseExpiration": "2025-10-31",
+    "deaNumber": "ML6129046",
+    "deaExpiration": "2026-10-31",
+    "specialties": [
+      "Nurse Practitioner"
+    ],
+    "boardCertifications": [],
+    "caqhId": "14989955",
+    "providerType": "FNP",
+    "taxonomyCodes": [],
+    "hireDate": "2025-01-13",
+    "medicaidApprovalDate": "1900-01-01",
+    "email": "",
+    "phone": "",
+    "practiceType": "group",
+    "taxId": "",
+    "medicaidNumber": "428628",
+    "medicalSchool": {
+      "degree": "FNP"
+    },
+    "languages": [
+      "English"
+    ],
+    "hospitalAffiliations": [],
+    "malpracticeInsurance": {
+      "carrier": "",
+      "policyNumber": "",
+      "coverageAmount": "",
+      "expirationDate": ""
+    },
+    "isActive": true,
+    "createdAt": "2025-08-13T21:25:07.693Z",
+    "updatedAt": "2025-08-13T21:25:07.693Z",
+    "tags": []
+  },
+  {
+    "id": "provider-njyu7huyy-meahbcod",
+    "firstName": "Jennifer",
+    "middleName": "Lynn",
+    "lastName": "Kearney",
+    "dateOfBirth": "1971-07-05",
+    "ssn": "272-66-2870",
+    "npi": "1154845766",
+    "licenseNumber": "APRN.CNP.020840",
+    "licenseState": "OH",
+    "licenseExpiration": "2025-10-31",
+    "deaNumber": "MK4410596",
+    "deaExpiration": "2025-12-31",
+    "specialties": [
+      "Nurse Practitioner"
+    ],
+    "boardCertifications": [],
+    "caqhId": "14055458",
+    "providerType": "FNP",
+    "taxonomyCodes": [],
+    "hireDate": "2025-03-10",
+    "medicareApprovalDate": "2025-01-08",
+    "medicaidApprovalDate": "2017-05-04",
+    "email": "",
+    "phone": "",
+    "practiceType": "group",
+    "taxId": "",
+    "medicaidNumber": "236268",
+    "medicalSchool": {
+      "degree": "FNP"
+    },
+    "languages": [
+      "English"
+    ],
+    "hospitalAffiliations": [],
+    "malpracticeInsurance": {
+      "carrier": "",
+      "policyNumber": "",
+      "coverageAmount": "",
+      "expirationDate": ""
+    },
+    "isActive": true,
+    "createdAt": "2025-08-13T21:25:07.693Z",
+    "updatedAt": "2025-08-13T21:25:07.693Z",
+    "tags": []
+  },
+  {
+    "id": "provider-rp7nq2y7d-meahbcod",
+    "firstName": "Hannah",
+    "lastName": "Schoen",
+    "dateOfBirth": "2000-06-22",
+    "ssn": "300-04-1193",
+    "npi": "1447066014",
+    "licenseNumber": "APRN.CNP.0038261",
+    "licenseState": "OH",
+    "licenseExpiration": "2025-10-31",
+    "deaNumber": "MS9372056",
+    "deaExpiration": "2025-01-03",
+    "specialties": [
+      "Nurse Practitioner"
+    ],
+    "boardCertifications": [],
+    "caqhId": "16389340",
+    "providerType": "CNP",
+    "taxonomyCodes": [],
+    "hireDate": "2025-04-07",
+    "email": "",
+    "phone": "",
+    "practiceType": "group",
+    "taxId": "",
+    "medicaidNumber": "96758",
+    "medicalSchool": {
+      "degree": "CNP"
+    },
+    "languages": [
+      "English"
+    ],
+    "hospitalAffiliations": [],
+    "malpracticeInsurance": {
+      "carrier": "",
+      "policyNumber": "",
+      "coverageAmount": "",
+      "expirationDate": ""
+    },
+    "isActive": true,
+    "createdAt": "2025-08-13T21:25:07.693Z",
+    "updatedAt": "2025-08-13T21:25:07.693Z",
+    "tags": []
+  },
+  {
+    "id": "provider-9aghigrcx-meahbcod",
+    "firstName": "Heather",
+    "middleName": "M",
+    "lastName": "Lambert",
+    "dateOfBirth": "1999-07-26",
+    "ssn": "283-04-9528",
+    "npi": "1619607249",
+    "licenseNumber": "I.2406021",
+    "licenseState": "OH",
+    "licenseExpiration": "2026-11-01",
+    "deaNumber": null,
+    "specialties": [
+      "Licensed Social Worker"
+    ],
+    "boardCertifications": [],
+    "caqhId": "15602162",
+    "providerType": "LISW",
+    "taxonomyCodes": [],
+    "hireDate": "2024-11-01",
+    "medicareApprovalDate": "2025-01-03",
+    "medicaidApprovalDate": "2024-11-01",
+    "email": "",
+    "phone": "",
+    "practiceType": "group",
+    "taxId": "",
+    "medicaidNumber": "90055",
+    "medicalSchool": {
+      "degree": "LISW"
+    },
+    "languages": [
+      "English"
+    ],
+    "hospitalAffiliations": [],
+    "malpracticeInsurance": {
+      "carrier": "",
+      "policyNumber": "",
+      "coverageAmount": "",
+      "expirationDate": ""
+    },
+    "isActive": true,
+    "createdAt": "2025-08-13T21:25:07.693Z",
+    "updatedAt": "2025-08-13T21:25:07.693Z",
+    "tags": []
+  }
+]
