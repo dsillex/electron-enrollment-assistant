@@ -14,7 +14,9 @@
       "Bash(rm:*)",
       "Bash(ls:*)",
       "Bash(echo $APPDATA)",
-      "Bash(npx tsc:*)"
+      "Bash(npx tsc:*)",
+      "Bash(dir:*)",
+      "Bash(powershell:*)"
     ],
     "deny": [],
     "ask": []

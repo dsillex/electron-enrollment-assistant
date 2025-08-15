@@ -7,13 +7,14 @@ import { PdfViewer } from './PdfViewer'
 import { WordViewer } from './WordViewer'
 import { ExcelViewer } from './ExcelViewer'
 import { ViewerControls } from './ViewerControls'
-import { DocumentField } from '@shared/types'
+import { DocumentField, ExcelConfiguration } from '@shared/types'
 
 interface DocumentViewerProps {
   filePath: string | null
   className?: string
   onFieldsDetected?: (fields: DocumentField[]) => void
   onError?: (error: string) => void
+  onExcelConfigurationComplete?: (configuration: ExcelConfiguration) => void
 }
 
 interface FileInfo {
@@ -32,7 +33,7 @@ interface AnalysisResult {
   metadata?: Record<string, any>
 }
 
-export function DocumentViewer({ filePath, className, onFieldsDetected, onError }: DocumentViewerProps) {
+export function DocumentViewer({ filePath, className, onFieldsDetected, onError, onExcelConfigurationComplete }: DocumentViewerProps) {
   const [isLoading, setIsLoading] = useState(false)
   const [analysisResult, setAnalysisResult] = useState<AnalysisResult | null>(null)
   const [fileInfo, setFileInfo] = useState<FileInfo | null>(null)
@@ -130,7 +131,8 @@ export function DocumentViewer({ filePath, className, onFieldsDetected, onError 
       zoom,
       showFields,
       fields: analysisResult.fields || [],
-      onPageChange: handlePageChange
+      onPageChange: handlePageChange,
+      onConfigurationComplete: onExcelConfigurationComplete
     }
 
     switch (fileInfo.type) {

@@ -3,34 +3,244 @@
 ## Project Overview
 Build a comprehensive Electron desktop application that automates the filling of PDF, Word (.docx), and Excel (.xlsx) files for healthcare provider enrollment. The system should read provider and office location data from JSON files and intelligently map this data to various insurance company forms and documents.
 
+## Current Implementation Status (as of 2025-08-14)
+
+### ✅ Completed Features
+
+#### PDF Support
+- **Field Detection**: Automatically detects text, checkbox, radio, and dropdown fields
+- **Multi-Provider Support**: Provider slots system for roster PDFs (Provider1_, Provider2_, etc.)
+- **Interactive Field Mapping**: Radio/dropdown fields with direct value selection
+- **Pattern Detection**: Intelligent detection of provider slot patterns
+- **Template System**: Save/load field mappings with provider-slot support
+
+#### Excel Support
+- **Grid Viewer**: Scrollable preview with 50+ row minimum display
+- **Basic Field Detection**: Creates Column A, B, C... field mappings
+- **Large File Support**: Handles rosters up to 1.2MB+ (Humana Standard Apex)
+- **Split View**: Document preview alongside field mapping interface
+
+#### Template System
+- **Save/Load Mappings**: Persistent field mapping storage
+- **Provider-Slot Support**: Special handling for multi-provider templates
+- **Validation Fixed**: Template saving now works correctly
+- **Type-Specific Templates**: Separate templates for PDF, Word, Excel
+
+#### UI/UX Improvements
+- **Split View Interface**: Document preview + field mapper simultaneously
+- **View Switching Fixed**: No more infinite loop when switching views
+- **Drag-and-Drop Mapping**: Visual field mapping interface
+- **Field Statistics**: Progress tracking for mapping completion
+
+#### Data Management
+- **Provider Database**: 34 providers loaded from cleanroster.json
+- **Extended Provider Fields**: Added caqhId, hireDate, termDate, and other fields
+- **Office & Address Support**: Separate management for locations
+- **Data Validation**: Form validation with error handling
+
+### 🚧 In Progress - Excel Roster Critical Requirements
+
+#### User-Selectable Row Configuration
+**Problem**: Insurance companies have wildly different Excel formats:
+- **Humana**: Often 5+ rows of company branding before headers start
+- **Aetna**: Headers might be on row 3-4 after logo
+- **Buckeye**: Completely different layout structure
+- **Carelon**: Multiple sections with headers scattered
+
+**Solution Needed**:
+1. **Click-to-Select Header Row**: User clicks on grid to select which row contains column headers
+2. **Click-to-Select Data Start**: User selects first row of actual provider data
+3. **Visual Row Highlighting**: Clear indication of selected header/data rows
+4. **Row Preview**: Show interpretation of selected rows before proceeding
+
+#### Column-to-Provider Field Mapping
+**Current Problem**: No way to map Excel columns to provider fields
+**Solution Needed**:
+```
+After row selection:
+Column A ("Last Name") → [Provider Field Dropdown: lastName]
+Column B ("First Name") → [Provider Field Dropdown: firstName] 
+Column C ("NPI Number") → [Provider Field Dropdown: npi]
+...(continue for all columns)
+```
+
+#### Excel Roster Mode
+**Key Understanding**: ALL Excel files are rosters (multiple providers per file)
+- One row = one provider
+- No single provider Excel mode needed
+- Process entire roster as batch
+
+### 📋 TODO - Next Session Priorities
+
+#### 1. Excel Row Selection UI (CRITICAL)
+- Add "Configure Rows" button to Excel viewer
+- Click-to-select header row functionality
+- Click-to-select data start row functionality
+- Visual highlighting of selected rows
+- Row number indicators prominent
+
+#### 2. Column Mapping Interface (CRITICAL)
+- After row selection, show column mapping panel
+- Dropdown for each column → provider field
+- Use actual header text when available
+- Support 50+ columns (full roster width)
+- Preview mapped data before processing
+
+#### 3. Horizontal Scrolling Fix (HIGH PRIORITY)
+- Remove all width constraints in Excel viewer
+- Enable full horizontal scrolling for wide rosters
+- Synchronized scrolling between headers and data
+- Show column letters prominently
+
+#### 4. Excel Template Storage
+- Save Excel-specific templates with row configuration
+- Store: header row, data start row, column mappings
+- Load templates for similar roster formats
+
+### Excel Roster Examples Analysis
+
+From `example_completed_excel_rosters/` folder:
+
+#### File Size Patterns
+- **Small Rosters**: 18KB-40KB (2-4 providers, single location)
+  - Examples: Amerihealth, Paramount
+- **Medium Rosters**: 100KB-500KB (multiple providers, multiple locations)
+  - Examples: UHC, Buckeye, Carelon
+- **Large Rosters**: 1MB+ (extensive provider data, complex structure)
+  - Examples: Humana Standard Apex, Humana Commercial
+
+#### Insurance Company Patterns
+- **Humana**: Complex multi-tab rosters, extensive metadata
+- **Aetna**: Location-focused, provider-to-address mapping
+- **Buckeye**: Varied structures, multiple formats
+- **Carelon**: Location-specific rosters (149 E Water, 620 E Water, etc.)
+- **UHC/Amerihealth**: Simpler 2-3 provider rosters
+
+#### Common Column Types Found
+- Provider demographics (First/Last Name, DOB, SSN)
+- Professional info (NPI, License Number, DEA, Specialties)
+- Office locations (multiple addresses per provider)
+- Insurance-specific fields (CAQH ID, Provider ID, Group numbers)
+- Effective dates (hire, termination, roster dates)
+
+## Known Issues & Limitations
+
+### Excel-Specific Issues (CRITICAL for next session)
+1. **No Row Selection Interface**: Cannot specify where headers/data start
+2. **Limited Horizontal Scrolling**: Cannot see full roster width (50+ columns)
+3. **No Column Mapping**: Cannot map Excel columns to provider fields
+4. **Fixed Structure Assumptions**: Currently assumes standard Excel layout
+
+### General Issues
+1. **Debug Logging**: Console.log statements still present throughout codebase
+2. **TypeScript Issues**: Some FormField name type issues in professional-info-step.tsx
+3. **Error Boundaries**: No error boundary components implemented
+4. **Performance**: Heavy components not memoized
+
+## Session Progress Log
+
+### 2025-08-14 Session Achievements
+- ✅ **Fixed Template Save Error**: Provider-slot mappings now validate correctly
+- ✅ **Implemented Excel Grid Viewer**: 50+ row preview with basic scrolling
+- ✅ **Fixed View Switching Loop**: "Back to Document View" now works without infinite loop
+- ✅ **Added Split View**: Document preview + field mapper side-by-side
+- ✅ **Enhanced Excel Preview**: Minimum 50 rows for better roster visibility
+- ✅ **Fixed Scrolling Issues**: Vertical scrolling working, horizontal partially fixed
+- ✅ **Added Debug Logging**: Comprehensive Excel processing logs for troubleshooting
+- 📁 **Received Example Rosters**: 23 completed roster files from various insurance companies
+- 🔧 **Identified Excel Requirements**: Need user-selectable row configuration
+
+### Key Insights from Session
+1. **Excel rosters vary wildly**: Headers can be anywhere from row 1 to row 10+
+2. **Insurance company differences**: Each has unique format (Humana vs Aetna vs Buckeye)
+3. **Row-based processing**: All Excel files are rosters (1 row = 1 provider)
+4. **Wide column spans**: Rosters can have 50+ columns requiring full horizontal scroll
+
+## Technical Implementation Notes
+
+### Excel Processing Flow (Current)
+1. User opens Excel file (.xlsx)
+2. System analyzes and creates column fields (A, B, C...)
+3. Displays 50+ row grid preview with basic scrolling
+4. User switches to field mapper for manual mapping
+5. Current limitation: Cannot specify header/data rows
+
+### Excel Processing Flow (Target)
+1. User opens Excel file (.xlsx)
+2. System displays full grid with row numbers prominent
+3. **User clicks to select header row** (row with column names)
+4. **User clicks to select data start row** (first provider row)
+5. System shows column mapping interface with actual headers
+6. User maps each column to provider field
+7. Save configuration as Excel template
+8. Process roster with all providers
+
+### Provider Slot System (for PDFs)
+- Detects patterns like Provider1_FirstName, Provider2_FirstName
+- Maps to specific provider positions in roster
+- Supports up to 10 provider slots currently
+- Works with PDF forms that have repeating provider sections
+
 ## Core Requirements
 
-### 1. Document Processing Capabilities
-- **PDF Support**: Read, analyze, and fill both form-fillable and non-fillable PDFs
-- **Word Support**: Process .docx files with content controls, bookmarks, and plain text replacement
-- **Excel Support**: Read and write to specific cells, handle multiple sheets, preserve formatting
-- **Auto-detection**: Automatically identify document type and available fields/regions
+### 2. Data Management ✅ COMPLETED
+- **Provider Data**: ✅ 34 providers loaded from cleanroster.json conversion
+- **Office Locations**: ✅ Separate JSON structure for physical office addresses
+- **Mailing Addresses**: ✅ Separate JSON structure for correspondence addresses
+- **Extended Provider Fields**: ✅ Added caqhId, hireDate, termDate, statusReason, and more
+- **Flexible Selection**: ✅ Implemented with checkboxes and multi-select
+  - Single provider ✅
+  - Multiple specific providers (with checkbox selection) ✅
+  - All providers at once ✅
+  - Single address ✅
+  - Multiple addresses ✅
+  - All addresses ✅
+  - Any combination of providers × addresses ✅
 
-### 2. Data Management
-- **Provider Data**: Maintain a comprehensive JSON structure for all provider information
-- **Office Locations**: Separate JSON structure for physical office addresses
-- **Mailing Addresses**: Separate JSON structure for correspondence addresses
-- **Flexible Selection**: Allow users to select:
-  - Single provider
-  - Multiple specific providers (with checkbox selection)
-  - All providers at once
-  - Single address
-  - Multiple addresses
-  - All addresses
-  - Any combination of providers × addresses
+### 3. Template System ✅ MOSTLY COMPLETED
+- **Visual Field Mapper**: ✅ Drag-and-drop interface implemented
+- **Template Storage**: ✅ Save mapping configurations as reusable templates
+- **Provider-Slot Support**: ✅ Special handling for multi-provider PDFs
+- **Template Validation**: ✅ Fixed validation issues for provider-slot mappings
+- **Default Values**: ✅ Allow setting default values for unmapped fields
+- **Field Transformations**: ✅ Support data formatting (dates, phone numbers, SSN, etc.)
+- **Excel Templates**: 🚧 Need Excel-specific templates with row configuration
+- **Smart Suggestions**: 🚧 Basic auto-suggest implemented, needs refinement
 
-### 3. Template System
-- **Visual Field Mapper**: Drag-and-drop interface to map JSON fields to document fields
-- **Template Storage**: Save mapping configurations as reusable templates
-- **Smart Suggestions**: Auto-suggest mappings based on field names and previous mappings
-- **Conditional Logic**: Support if/then rules (e.g., "if provider.type === 'MD' then use field X")
-- **Default Values**: Allow setting default values for unmapped fields
-- **Field Transformations**: Support data formatting (dates, phone numbers, SSN, etc.)
+## Data Structure Updates
+
+### Provider Interface Enhancements
+The Provider interface has been extended with additional fields commonly found in healthcare rosters:
+
+```typescript
+interface Provider {
+  // Core fields (existing)
+  id: string;
+  firstName: string;
+  lastName: string;
+  npi: string;
+  // ... other existing fields
+
+  // NEW FIELDS ADDED:
+  caqhId?: string;              // CAQH provider ID
+  hireDate?: string;            // Provider hire date
+  termDate?: string;            // Provider termination date
+  statusReason?: string;        // Status change reason
+  middleInitial?: string;       // Middle initial (separate from middleName)
+  suffix?: string;              // Jr., Sr., MD, etc.
+  credentials?: string[];       // Professional credentials
+  contractEffectiveDate?: string; // Contract start date
+  contractTerminationDate?: string; // Contract end date
+  // ... additional fields as needed
+}
+```
+
+### Current Provider Database Status
+- **Total Providers**: 34 active providers loaded
+- **Data Source**: Converted from cleanroster.json
+- **Location**: `C:\Users\dougs\AppData\Roaming\Provider Enrollment Assistant\data\providers.json`
+- **Fields Populated**: Basic demographics, NPI, licensing, contact info
+- **Extended Fields**: Available but may need population for specific rosters
 
 ## Technical Stack
 

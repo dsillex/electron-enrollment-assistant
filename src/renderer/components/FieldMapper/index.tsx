@@ -371,7 +371,7 @@ export function FieldMapper({
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-0 relative">
             {/* Data Sources Panel */}
             <div className="border-r">
-              <DataSourcePanel />
+              <DataSourcePanel documentType={documentType} />
             </div>
 
             {/* Mapping Connections (Middle Column) */}

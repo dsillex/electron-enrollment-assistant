@@ -50,7 +50,8 @@ export class PdfProcessor extends BaseDocumentProcessor {
   async fillDocument(
     mappings: FieldMapping[],
     data: Record<string, any>,
-    outputPath: string
+    outputPath: string,
+    _excelConfig?: any
   ): Promise<FillResult> {
     try {
       console.log(`PDF fillDocument called with ${mappings.length} mappings`)

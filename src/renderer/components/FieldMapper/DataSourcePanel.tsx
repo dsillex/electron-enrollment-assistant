@@ -145,9 +145,16 @@ function DataSourceSection({ title, icon, sources, defaultExpanded = true }: Dat
   )
 }
 
-export function DataSourcePanel() {
+interface DataSourcePanelProps {
+  documentType?: 'pdf' | 'docx' | 'xlsx'
+}
+
+export function DataSourcePanel({ documentType }: DataSourcePanelProps) {
   // State for dynamic provider slot count
   const [visibleSlotCount, setVisibleSlotCount] = React.useState(5)
+  
+  // Check if this is an Excel file (roster mode)
+  const isExcelRoster = documentType === 'xlsx'
 
   // Provider data sources
   const providerSources: DataSource[] = [
@@ -341,8 +348,8 @@ export function DataSourcePanel() {
     return slotSources
   }
 
-  // Group provider slot sources by slot number
-  const providerSlotSources = generateProviderSlotSources(visibleSlotCount)
+  // Generate provider slot sources only for non-Excel files (PDF/Word)
+  const providerSlotSources = isExcelRoster ? [] : generateProviderSlotSources(visibleSlotCount)
   const slotsByNumber = providerSlotSources.reduce((acc, source) => {
     const slotNum = source.slotNumber!
     if (!acc[slotNum]) acc[slotNum] = []
@@ -377,35 +384,37 @@ export function DataSourcePanel() {
         
         <Separator />
         
-        {/* Provider Slots for Roster Mode */}
-        <div className="space-y-2">
-          <div className="flex items-center justify-between">
-            <div className="flex items-center space-x-2 text-sm font-medium text-muted-foreground">
-              <User className="h-4 w-4 text-blue-600" />
-              <span>Provider Slots (Roster Mode)</span>
+        {/* Provider Slots for Roster Mode (PDF/Word only) */}
+        {!isExcelRoster && (
+          <div className="space-y-2">
+            <div className="flex items-center justify-between">
+              <div className="flex items-center space-x-2 text-sm font-medium text-muted-foreground">
+                <User className="h-4 w-4 text-blue-600" />
+                <span>Provider Slots (Roster Mode)</span>
+              </div>
+              <Button 
+                variant="outline" 
+                size="sm"
+                onClick={() => setVisibleSlotCount(prev => prev + 5)}
+              >
+                Add More (+5)
+              </Button>
             </div>
-            <Button 
-              variant="outline" 
-              size="sm"
-              onClick={() => setVisibleSlotCount(prev => prev + 5)}
-            >
-              Add More (+5)
-            </Button>
+            <div className="text-xs text-muted-foreground pl-6 mb-2">
+              Use these to assign specific providers to specific fields. Showing slots 1-{visibleSlotCount}.
+            </div>
+            
+            {Object.entries(slotsByNumber).map(([slotNum, sources]) => (
+              <DataSourceSection
+                key={slotNum}
+                title={`Provider Slot #${slotNum}`}
+                icon={<User className="h-4 w-4 text-blue-600" />}
+                sources={sources}
+                defaultExpanded={false}
+              />
+            ))}
           </div>
-          <div className="text-xs text-muted-foreground pl-6 mb-2">
-            Use these to assign specific providers to specific fields. Showing slots 1-{visibleSlotCount}.
-          </div>
-          
-          {Object.entries(slotsByNumber).map(([slotNum, sources]) => (
-            <DataSourceSection
-              key={slotNum}
-              title={`Provider Slot #${slotNum}`}
-              icon={<User className="h-4 w-4 text-blue-600" />}
-              sources={sources}
-              defaultExpanded={false}
-            />
-          ))}
-        </div>
+        )}
         
         <Separator />
         
