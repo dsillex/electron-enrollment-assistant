@@ -75,6 +75,28 @@ export function FieldMapper({
       }
     }
 
+    // Handle static Y/N values
+    if (dataSource.path.startsWith('static.')) {
+      const staticValueMap: Record<string, string> = {
+        'static.Y': 'Y',
+        'static.N': 'N', 
+        'static.YES': 'YES',
+        'static.NO': 'NO',
+        'static.Yes': 'Yes',
+        'static.No': 'No',
+        'static.TRUE': 'TRUE',
+        'static.FALSE': 'FALSE',
+        'static.True': 'True',
+        'static.False': 'False'
+      }
+      
+      if (staticValueMap[dataSource.path]) {
+        sourceType = 'static'
+        sourcePath = undefined
+        staticValue = staticValueMap[dataSource.path]
+      }
+    }
+
     // Auto-detect and configure transformations based on data source
     if (dataSource.path.startsWith('combined.')) {
       switch (dataSource.path) {

@@ -19,6 +19,7 @@
       "Bash(powershell:*)"
     ],
     "deny": [],
-    "ask": []
+    "ask": [],
+    "defaultMode": "acceptEdits"
   }
 }
