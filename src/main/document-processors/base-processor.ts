@@ -48,7 +48,8 @@ export abstract class BaseDocumentProcessor {
   abstract fillDocument(
     mappings: FieldMapping[],
     data: Record<string, any>,
-    outputPath: string
+    outputPath: string,
+    excelConfig?: any
   ): Promise<FillResult>
 
   /**

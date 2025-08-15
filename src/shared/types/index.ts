@@ -215,6 +215,22 @@ export interface ConditionalRule {
   value?: any;
 }
 
+// Excel Configuration Types
+export interface ExcelConfiguration {
+  headerRow: number
+  dataStartRow: number
+  columnMappings: ExcelColumnMapping[]
+  sheetName?: string
+}
+
+export interface ExcelColumnMapping {
+  columnIndex: number
+  columnLetter: string
+  headerText: string
+  mappedField: string | null
+  providerFieldPath?: string // e.g., "firstName", "npi", etc.
+}
+
 // Document Processing Types
 export interface DocumentField {
   id: string;

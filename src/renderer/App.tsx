@@ -22,7 +22,7 @@ import { useTemplates } from './hooks/use-templates'
 import { useProviderStore } from './stores/provider-store'
 import { useOfficeStore } from './stores/office-store'
 import { useToast } from './hooks/use-toast'
-import { Provider, OfficeLocation, DocumentField, Template, FieldMapping } from '@shared/types'
+import { Provider, OfficeLocation, DocumentField, Template, FieldMapping, ExcelConfiguration } from '@shared/types'
 import { ProviderFormData, OfficeLocationFormData } from '@shared/validation/schemas'
 
 function App() {
@@ -79,6 +79,10 @@ function App() {
   const [showFieldMapper, setShowFieldMapper] = useState(false)
   const [showSaveTemplateDialog, setShowSaveTemplateDialog] = useState(false)
   const [showFillDocumentDialog, setShowFillDocumentDialog] = useState(false)
+  const [fieldsInitiallyDetected, setFieldsInitiallyDetected] = useState(false)
+  
+  // Excel configuration state
+  const [excelConfiguration, setExcelConfiguration] = useState<ExcelConfiguration | null>(null)
 
   useEffect(() => {
     const loadAppInfo = async () => {
@@ -223,12 +227,39 @@ function App() {
 
   const handleFieldsDetected = (fields: DocumentField[]) => {
     setDetectedFields(fields)
-    setShowFieldMapper(fields.length > 0)
+    // Only auto-switch to field mapper on first detection, not on re-detection
+    if (!fieldsInitiallyDetected && fields.length > 0) {
+      setShowFieldMapper(true)
+      setFieldsInitiallyDetected(true)
+    }
     console.log('Detected fields:', fields)
   }
 
   const handleDocumentError = (error: string) => {
     setDocumentError(error)
+  }
+
+  const handleExcelConfigurationComplete = (configuration: ExcelConfiguration) => {
+    console.log('Excel configuration received in App:', configuration)
+    setExcelConfiguration(configuration)
+    
+    // Generate DocumentFields based on Excel headers instead of generic column names
+    const excelFields: DocumentField[] = configuration.columnMappings.map((mapping, index) => ({
+      id: `Excel_${mapping.columnLetter}`,
+      name: mapping.headerText ? `${mapping.headerText} (Col ${mapping.columnLetter})` : `Column ${mapping.columnLetter}`,
+      type: 'text' as const,
+      required: false,
+      value: ''
+    }))
+    
+    console.log('Generated Excel fields with headers:', excelFields)
+    setDetectedFields(excelFields)
+    
+    // Auto-switch to field mapper if not already shown
+    if (!fieldsInitiallyDetected && excelFields.length > 0) {
+      setShowFieldMapper(true)
+      setFieldsInitiallyDetected(true)
+    }
   }
 
   const handleClearDocument = () => {
@@ -239,6 +270,8 @@ function App() {
     setLoadedTemplate(null)
     setAvailableTemplateId('')
     setShowFieldMapper(false)
+    setFieldsInitiallyDetected(false)
+    setExcelConfiguration(null)
   }
 
   const handleMappingsChange = (mappings: FieldMapping[]) => {
@@ -306,6 +339,29 @@ function App() {
     }
   }
 
+  // Helper function to convert field mappings to Excel configuration for processing
+  const convertMappingsToExcelConfig = (mappings: FieldMapping[], baseConfig: ExcelConfiguration): ExcelConfiguration => {
+    const updatedColumnMappings = baseConfig.columnMappings.map(colMapping => {
+      // Find the field mapping that corresponds to this column
+      const fieldMapping = mappings.find(fm => fm.documentFieldId === `Excel_${colMapping.columnLetter}`)
+      
+      if (fieldMapping && fieldMapping.sourcePath) {
+        return {
+          ...colMapping,
+          mappedField: fieldMapping.documentFieldName,
+          providerFieldPath: fieldMapping.sourcePath.replace('provider.', '') // Remove 'provider.' prefix
+        }
+      }
+      
+      return colMapping
+    })
+    
+    return {
+      ...baseConfig,
+      columnMappings: updatedColumnMappings
+    }
+  }
+
   const handleFillDocument = async (selections: {
     providerIds: string[]
     officeIds: string[]
@@ -346,7 +402,7 @@ function App() {
         
         // Clean up filename
         fileName = fileName.replace(/\s+/g, '_').replace(/[^a-zA-Z0-9._-]/g, '')
-        const outputPath = `${selections.outputDirectory}/${fileName}.pdf`
+        const outputPath = `${selections.outputDirectory}/${fileName}${selectedDocument.extension || '.pdf'}`
 
         // Prepare roster data with all providers
         const rosterData = {
@@ -359,12 +415,18 @@ function App() {
           }
         }
 
+        // Create final Excel configuration with field mappings for processing
+        const finalExcelConfig = selectedDocument.extension === '.xlsx' && excelConfiguration 
+          ? convertMappingsToExcelConfig(fieldMappings, excelConfiguration)
+          : undefined
+
         jobs.push({
           filePath: selectedDocument.path,
           mappings: fieldMappings,
           data: rosterData,
           outputPath,
-          isRosterMode: true
+          isRosterMode: true,
+          excelConfiguration: finalExcelConfig
         })
 
       } else {
@@ -390,7 +452,7 @@ function App() {
             
             // Clean up filename
             fileName = fileName.replace(/\s+/g, '_').replace(/[^a-zA-Z0-9._-]/g, '')
-            const outputPath = `${selections.outputDirectory}/${fileName}.pdf`
+            const outputPath = `${selections.outputDirectory}/${fileName}${selectedDocument.extension || '.pdf'}`
 
             // Prepare data for this combination
             const data = {
@@ -400,12 +462,18 @@ function App() {
               custom: { fillMode: 'individual' }
             }
 
+            // Create final Excel configuration with field mappings for processing
+            const finalExcelConfig = selectedDocument.extension === '.xlsx' && excelConfiguration 
+              ? convertMappingsToExcelConfig(fieldMappings, excelConfiguration)
+              : undefined
+
             jobs.push({
               filePath: selectedDocument.path,
               mappings: fieldMappings,
               data,
               outputPath,
-              isRosterMode: false
+              isRosterMode: false,
+              excelConfiguration: finalExcelConfig
             })
           }
         }
@@ -533,6 +601,7 @@ function App() {
                       filePath={selectedDocument?.path || null}
                       onFieldsDetected={handleFieldsDetected}
                       onError={handleDocumentError}
+                      onExcelConfigurationComplete={handleExcelConfigurationComplete}
                     />
                     {documentError && (
                       <div className="p-4">
@@ -578,81 +647,105 @@ function App() {
                   </CardHeader>
                 </Card>
 
-                {/* Template Loader */}
-                <Card>
-                  <CardHeader>
-                    <CardTitle className="flex items-center justify-between">
-                      <span>Load Template</span>
-                      {loadedTemplate && (
-                        <Badge variant="secondary" className="text-xs">
-                          {loadedTemplate.name} ({loadedTemplate.mappings.length} mappings)
-                        </Badge>
-                      )}
-                    </CardTitle>
-                    <CardDescription>
-                      {loadedTemplate ? 
-                        `Currently using template: ${loadedTemplate.name}` : 
-                        'Load a saved template to populate field mappings'
-                      }
-                    </CardDescription>
-                  </CardHeader>
-                  <CardContent>
-                    <div className="flex space-x-2">
-                      <div className="flex-1">
-                        <Select 
-                          value={availableTemplateId} 
-                          onValueChange={setAvailableTemplateId}
-                        >
-                          <SelectTrigger>
-                            <SelectValue placeholder="Choose a template..." />
-                          </SelectTrigger>
-                          <SelectContent>
-                            {templates
-                              .filter(t => !selectedDocument?.extension || 
-                                t.documentType === selectedDocument.extension.replace('.', ''))
-                              .map(template => (
-                                <SelectItem key={template.id} value={template.id}>
-                                  <div className="flex items-center space-x-2">
-                                    <span>{template.name}</span>
-                                    <Badge variant="outline" className="text-xs ml-2">
-                                      {template.mappings.length} fields
-                                    </Badge>
-                                  </div>
-                                </SelectItem>
-                              ))
-                            }
-                          </SelectContent>
-                        </Select>
-                      </div>
-                      <Button 
-                        onClick={handleLoadTemplate}
-                        disabled={!availableTemplateId}
-                        size="sm"
-                      >
-                        Load Template
-                      </Button>
-                      {loadedTemplate && (
-                        <Button 
-                          onClick={handleClearTemplate}
-                          variant="outline"
-                          size="sm"
-                        >
-                          Clear
-                        </Button>
-                      )}
-                    </div>
-                  </CardContent>
-                </Card>
+                {/* Split View: Document Preview + Field Mapper */}
+                <div className="grid grid-cols-2 gap-4">
+                  {/* Left: Document Preview */}
+                  <Card>
+                    <CardHeader>
+                      <CardTitle>Document Preview</CardTitle>
+                      <CardDescription>
+                        View the Excel document while mapping fields
+                      </CardDescription>
+                    </CardHeader>
+                    <CardContent className="p-0 h-[600px] overflow-auto">
+                      <DocumentViewer
+                        filePath={selectedDocument?.path || null}
+                        onFieldsDetected={(fields) => setDetectedFields(fields)} // Don't auto-switch
+                        onError={handleDocumentError}
+                        onExcelConfigurationComplete={handleExcelConfigurationComplete}
+                      />
+                    </CardContent>
+                  </Card>
 
-                {/* Field Mapper */}
-                <FieldMapper
-                  documentFields={detectedFields}
-                  mappings={fieldMappings}
-                  onMappingsChange={handleMappingsChange}
-                  onSaveTemplate={handleSaveTemplate}
-                  selectedTemplate={selectedTemplate}
-                  documentType={selectedDocument?.extension?.replace('.', '') as 'pdf' | 'docx' | 'xlsx' | undefined}
-                />
+                  {/* Right: Field Mapper */}
+                  <div className="space-y-4">
+                    {/* Template Loader */}
+                    <Card>
+                      <CardHeader>
+                        <CardTitle className="flex items-center justify-between">
+                          <span>Load Template</span>
+                          {loadedTemplate && (
+                            <Badge variant="secondary" className="text-xs">
+                              {loadedTemplate.name} ({loadedTemplate.mappings.length} mappings)
+                            </Badge>
+                          )}
+                        </CardTitle>
+                        <CardDescription>
+                          {loadedTemplate ? 
+                            `Currently using template: ${loadedTemplate.name}` : 
+                            'Load a saved template to populate field mappings'
+                          }
+                        </CardDescription>
+                      </CardHeader>
+                      <CardContent>
+                        <div className="flex space-x-2">
+                          <div className="flex-1">
+                            <Select 
+                              value={availableTemplateId} 
+                              onValueChange={setAvailableTemplateId}
+                            >
+                              <SelectTrigger>
+                                <SelectValue placeholder="Choose a template..." />
+                              </SelectTrigger>
+                              <SelectContent>
+                                {templates
+                                  .filter(t => !selectedDocument?.extension || 
+                                    t.documentType === selectedDocument.extension.replace('.', ''))
+                                  .map(template => (
+                                    <SelectItem key={template.id} value={template.id}>
+                                      <div className="flex items-center space-x-2">
+                                        <span>{template.name}</span>
+                                        <Badge variant="outline" className="text-xs ml-2">
+                                          {template.mappings.length} fields
+                                        </Badge>
+                                      </div>
+                                    </SelectItem>
+                                  ))
+                                }
+                              </SelectContent>
+                            </Select>
+                          </div>
+                          <Button 
+                            onClick={handleLoadTemplate}
+                            disabled={!availableTemplateId}
+                            size="sm"
+                          >
+                            Load Template
+                          </Button>
+                          {loadedTemplate && (
+                            <Button 
+                              onClick={handleClearTemplate}
+                              variant="outline"
+                              size="sm"
+                            >
+                              Clear
+                            </Button>
+                          )}
+                        </div>
+                      </CardContent>
+                    </Card>
+
+                    {/* Field Mapper */}
+                    <FieldMapper
+                      documentFields={detectedFields}
+                      mappings={fieldMappings}
+                      onMappingsChange={handleMappingsChange}
+                      onSaveTemplate={handleSaveTemplate}
+                      selectedTemplate={selectedTemplate}
+                      documentType={selectedDocument?.extension?.replace('.', '') as 'pdf' | 'docx' | 'xlsx' | undefined}
+                    />
+                  </div>
+                </div>
               </div>
             )}
           </TabsContent>
@@ -856,6 +949,7 @@ function App() {
         providers={providers}
         offices={offices}
         _mailingAddresses={[]} // TODO: Add mailing addresses when implemented
+        excelConfiguration={excelConfiguration}
         onFill={handleFillDocument}
       />
 

@@ -24,7 +24,8 @@ export class WordProcessor extends BaseDocumentProcessor {
   async fillDocument(
     mappings: FieldMapping[],
     data: Record<string, any>,
-    outputPath: string
+    outputPath: string,
+    _excelConfig?: any
   ): Promise<FillResult> {
     // TODO: Implement Word document filling
     return {

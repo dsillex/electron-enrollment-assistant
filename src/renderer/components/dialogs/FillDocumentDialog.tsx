@@ -35,9 +35,10 @@ import {
   Play,
   Loader2,
   CheckCircle,
-  AlertCircle
+  AlertCircle,
+  FileSpreadsheet
 } from 'lucide-react'
-import { Provider, OfficeLocation, MailingAddress, FieldMapping } from '@shared/types'
+import { Provider, OfficeLocation, MailingAddress, FieldMapping, ExcelConfiguration } from '@shared/types'
 
 const fillDocumentSchema = z.object({
   outputDirectory: z.string().min(1, 'Output directory is required'),
@@ -57,6 +58,7 @@ interface FillDocumentDialogProps {
   providers: Provider[]
   offices: OfficeLocation[]
   _mailingAddresses?: MailingAddress[]
+  excelConfiguration?: ExcelConfiguration | null
   onFill: (selections: FillSelections) => Promise<void>
 }
 
@@ -85,6 +87,7 @@ export function FillDocumentDialog({
   providers,
   offices,
   _mailingAddresses = [],
+  excelConfiguration,
   onFill
 }: FillDocumentDialogProps) {
   const [isLoading, setIsLoading] = useState(false)
@@ -109,6 +112,15 @@ export function FillDocumentDialog({
       fillMode: 'individual'
     }
   })
+
+  // Auto-set roster mode for Excel files
+  useEffect(() => {
+    if (excelConfiguration) {
+      setFillMode('roster')
+      form.setValue('fillMode', 'roster')
+      console.log('Excel configuration detected, setting roster mode')
+    }
+  }, [excelConfiguration, form])
 
   // Reset selections when dialog opens/closes
   useEffect(() => {
@@ -387,6 +399,16 @@ export function FillDocumentDialog({
                       <CheckCircle className="h-4 w-4" />
                       <AlertDescription>
                         Roster mode selected. You can choose specific providers and their order in the document.
+                      </AlertDescription>
+                    </Alert>
+                  )}
+                  
+                  {excelConfiguration && (
+                    <Alert className="border-blue-200 bg-blue-50">
+                      <FileSpreadsheet className="h-4 w-4 text-blue-600" />
+                      <AlertDescription className="text-blue-800">
+                        <strong>Excel Roster Detected:</strong> Header row {excelConfiguration.headerRow}, 
+                        Data rows {excelConfiguration.dataStartRow}+. Each selected provider will fill one row in the Excel file.
                       </AlertDescription>
                     </Alert>
                   )}

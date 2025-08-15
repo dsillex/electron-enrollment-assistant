@@ -3,7 +3,7 @@ import * as fs from 'fs-extra'
 import * as path from 'path'
 import { ProcessorFactory } from '../document-processors/processor-factory'
 import { ProcessingOptions } from '../document-processors/base-processor'
-import { FieldMapping } from '@shared/types'
+import { FieldMapping, ExcelConfiguration } from '@shared/types'
 
 export function registerDocumentHandlers() {
   // Analyze document and extract fields
@@ -178,6 +178,7 @@ export function registerDocumentHandlers() {
       mappings: FieldMapping[]
       data: Record<string, any>
       outputPath: string
+      excelConfiguration?: ExcelConfiguration
     }>
   ) => {
     console.log(`Starting batch processing of ${jobs.length} documents`)
@@ -198,7 +199,10 @@ export function registerDocumentHandlers() {
 
         // Fill the document
         console.log(`Filling document with ${job.mappings.length} mappings...`)
-        const result = await processor.fillDocument(job.mappings, job.data, job.outputPath)
+        if (job.excelConfiguration) {
+          console.log(`Using Excel configuration:`, job.excelConfiguration)
+        }
+        const result = await processor.fillDocument(job.mappings, job.data, job.outputPath, job.excelConfiguration)
         console.log(`Document processing result:`, result)
         results.push({
           ...result,
