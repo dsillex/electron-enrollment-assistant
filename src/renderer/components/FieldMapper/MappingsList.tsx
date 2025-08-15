@@ -432,6 +432,113 @@ function MappingItem({
           </div>
         )}
 
+        {/* Text Field Y/N Quick Controls */}
+        {mapping.documentFieldType === 'text' && (
+          <div className="bg-purple-50 border border-purple-200 rounded p-2 space-y-2">
+            <div className="flex items-center justify-between">
+              <Label className="text-xs font-medium text-purple-800">
+                Common Text Answers
+              </Label>
+            </div>
+            <div className="space-y-1">
+              <Label className="text-xs text-purple-600">Quick Y/N Options:</Label>
+              <div className="grid grid-cols-4 gap-1">
+                <Button
+                  variant="outline"
+                  size="sm"
+                  onClick={() => {
+                    onUpdate(mapping.documentFieldId, { 
+                      staticValue: 'Y',
+                      sourceType: 'static',
+                      sourcePath: undefined
+                    })
+                  }}
+                  className="h-6 px-2 text-xs"
+                >
+                  Y
+                </Button>
+                <Button
+                  variant="outline"
+                  size="sm"
+                  onClick={() => {
+                    onUpdate(mapping.documentFieldId, { 
+                      staticValue: 'N',
+                      sourceType: 'static',
+                      sourcePath: undefined
+                    })
+                  }}
+                  className="h-6 px-2 text-xs"
+                >
+                  N
+                </Button>
+                <Button
+                  variant="outline"
+                  size="sm"
+                  onClick={() => {
+                    onUpdate(mapping.documentFieldId, { 
+                      staticValue: 'Yes',
+                      sourceType: 'static',
+                      sourcePath: undefined
+                    })
+                  }}
+                  className="h-6 px-2 text-xs"
+                >
+                  Yes
+                </Button>
+                <Button
+                  variant="outline"
+                  size="sm"
+                  onClick={() => {
+                    onUpdate(mapping.documentFieldId, { 
+                      staticValue: 'No',
+                      sourceType: 'static',
+                      sourcePath: undefined
+                    })
+                  }}
+                  className="h-6 px-2 text-xs"
+                >
+                  No
+                </Button>
+              </div>
+              <div className="grid grid-cols-2 gap-1 mt-1">
+                <Button
+                  variant="outline"
+                  size="sm"
+                  onClick={() => {
+                    onUpdate(mapping.documentFieldId, { 
+                      staticValue: 'YES',
+                      sourceType: 'static',
+                      sourcePath: undefined
+                    })
+                  }}
+                  className="h-6 px-2 text-xs"
+                >
+                  YES
+                </Button>
+                <Button
+                  variant="outline"
+                  size="sm"
+                  onClick={() => {
+                    onUpdate(mapping.documentFieldId, { 
+                      staticValue: 'NO',
+                      sourceType: 'static',
+                      sourcePath: undefined
+                    })
+                  }}
+                  className="h-6 px-2 text-xs"
+                >
+                  NO
+                </Button>
+              </div>
+              {mapping.staticValue && (
+                <div className="text-xs text-purple-600">
+                  Will fill "{mapping.staticValue}" when the document is processed.
+                </div>
+              )}
+            </div>
+          </div>
+        )}
+
         {/* Radio Button and Dropdown Quick Controls */}
         {(mapping.documentFieldType === 'radio' || mapping.documentFieldType === 'dropdown') && (() => {
           console.log(`Checking field ${mapping.documentFieldId}:`, {
@@ -488,38 +595,170 @@ function MappingItem({
                 {mapping.documentFieldType === 'radio' ? 'Radio Button Value' : 'Dropdown Value'}
               </Label>
             </div>
-            <div className="space-y-1">
-              <Label className="text-xs text-yellow-600">Manual Input Required (options not detected):</Label>
-              <div className="flex space-x-1">
-                <Input
-                  value={mapping.staticValue || ''}
-                  onChange={(e) => setStaticValue(e.target.value)}
-                  placeholder="Enter the exact option value..."
-                  className="h-7 text-xs"
-                />
-                <Button
-                  variant="outline"
-                  size="sm"
-                  onClick={() => {
-                    onUpdate(mapping.documentFieldId, { 
-                      staticValue: staticValue,
-                      sourceType: 'static',
-                      sourcePath: undefined
-                    })
-                  }}
-                  className="h-7 px-2"
-                >
-                  Set
-                </Button>
+            <div className="space-y-2">
+              {/* Quick Y/N and Yes/No Buttons */}
+              <div className="space-y-1">
+                <Label className="text-xs text-yellow-600">Quick Select Common Answers:</Label>
+                <div className="grid grid-cols-2 gap-1">
+                  <div className="space-y-1">
+                    <div className="flex space-x-1">
+                      <Button
+                        variant="outline"
+                        size="sm"
+                        onClick={() => {
+                          onUpdate(mapping.documentFieldId, { 
+                            staticValue: 'Y',
+                            sourceType: 'static',
+                            sourcePath: undefined
+                          })
+                        }}
+                        className="h-6 px-2 text-xs flex-1"
+                      >
+                        Y
+                      </Button>
+                      <Button
+                        variant="outline"
+                        size="sm"
+                        onClick={() => {
+                          onUpdate(mapping.documentFieldId, { 
+                            staticValue: 'N',
+                            sourceType: 'static',
+                            sourcePath: undefined
+                          })
+                        }}
+                        className="h-6 px-2 text-xs flex-1"
+                      >
+                        N
+                      </Button>
+                    </div>
+                    <div className="flex space-x-1">
+                      <Button
+                        variant="outline"
+                        size="sm"
+                        onClick={() => {
+                          onUpdate(mapping.documentFieldId, { 
+                            staticValue: 'YES',
+                            sourceType: 'static',
+                            sourcePath: undefined
+                          })
+                        }}
+                        className="h-6 px-2 text-xs flex-1"
+                      >
+                        YES
+                      </Button>
+                      <Button
+                        variant="outline"
+                        size="sm"
+                        onClick={() => {
+                          onUpdate(mapping.documentFieldId, { 
+                            staticValue: 'NO',
+                            sourceType: 'static',
+                            sourcePath: undefined
+                          })
+                        }}
+                        className="h-6 px-2 text-xs flex-1"
+                      >
+                        NO
+                      </Button>
+                    </div>
+                  </div>
+                  <div className="space-y-1">
+                    <div className="flex space-x-1">
+                      <Button
+                        variant="outline"
+                        size="sm"
+                        onClick={() => {
+                          onUpdate(mapping.documentFieldId, { 
+                            staticValue: 'Yes',
+                            sourceType: 'static',
+                            sourcePath: undefined
+                          })
+                        }}
+                        className="h-6 px-2 text-xs flex-1"
+                      >
+                        Yes
+                      </Button>
+                      <Button
+                        variant="outline"
+                        size="sm"
+                        onClick={() => {
+                          onUpdate(mapping.documentFieldId, { 
+                            staticValue: 'No',
+                            sourceType: 'static',
+                            sourcePath: undefined
+                          })
+                        }}
+                        className="h-6 px-2 text-xs flex-1"
+                      >
+                        No
+                      </Button>
+                    </div>
+                    <div className="flex space-x-1">
+                      <Button
+                        variant="outline"
+                        size="sm"
+                        onClick={() => {
+                          onUpdate(mapping.documentFieldId, { 
+                            staticValue: 'TRUE',
+                            sourceType: 'static',
+                            sourcePath: undefined
+                          })
+                        }}
+                        className="h-6 px-2 text-xs flex-1"
+                      >
+                        TRUE
+                      </Button>
+                      <Button
+                        variant="outline"
+                        size="sm"
+                        onClick={() => {
+                          onUpdate(mapping.documentFieldId, { 
+                            staticValue: 'FALSE',
+                            sourceType: 'static',
+                            sourcePath: undefined
+                          })
+                        }}
+                        className="h-6 px-2 text-xs flex-1"
+                      >
+                        FALSE
+                      </Button>
+                    </div>
+                  </div>
+                </div>
               </div>
+
+              {/* Manual Input */}
+              <div className="space-y-1">
+                <Label className="text-xs text-yellow-600">Or enter custom value:</Label>
+                <div className="flex space-x-1">
+                  <Input
+                    value={staticValue}
+                    onChange={(e) => setStaticValue(e.target.value)}
+                    placeholder="Enter the exact option value..."
+                    className="h-7 text-xs"
+                  />
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    onClick={() => {
+                      onUpdate(mapping.documentFieldId, { 
+                        staticValue: staticValue,
+                        sourceType: 'static',
+                        sourcePath: undefined
+                      })
+                    }}
+                    className="h-7 px-2"
+                  >
+                    Set
+                  </Button>
+                </div>
+              </div>
+              
               {mapping.staticValue && (
                 <div className="text-xs text-yellow-600">
                   Will use "{mapping.staticValue}" when the document is filled.
                 </div>
               )}
-              <div className="text-xs text-yellow-500 bg-yellow-100 p-1 rounded">
-                💡 Common values: YES/NO, TRUE/FALSE, or check the PDF for exact options
-              </div>
             </div>
           </div>
         )}
@@ -643,21 +882,86 @@ function MappingItem({
               {/* Static Value */}
               <div className="space-y-1">
                 <Label className="text-xs">Static Value</Label>
-                <div className="flex space-x-1">
-                  <Input
-                    value={staticValue}
-                    onChange={(e) => setStaticValue(e.target.value)}
-                    placeholder="Enter static value..."
-                    className="h-7 text-xs"
-                  />
-                  <Button
-                    variant="outline"
-                    size="sm"
-                    onClick={handleSaveStaticValue}
-                    className="h-7 px-2"
-                  >
-                    Set
-                  </Button>
+                <div className="space-y-1">
+                  {/* Quick Y/N Buttons */}
+                  <div className="flex space-x-1">
+                    <Button
+                      variant="outline"
+                      size="sm"
+                      onClick={() => {
+                        setStaticValue('Y')
+                        onUpdate(mapping.documentFieldId, { 
+                          staticValue: 'Y',
+                          sourceType: 'static',
+                          sourcePath: undefined
+                        })
+                      }}
+                      className="h-6 px-2 text-xs"
+                    >
+                      Y
+                    </Button>
+                    <Button
+                      variant="outline"
+                      size="sm"
+                      onClick={() => {
+                        setStaticValue('N')
+                        onUpdate(mapping.documentFieldId, { 
+                          staticValue: 'N',
+                          sourceType: 'static',
+                          sourcePath: undefined
+                        })
+                      }}
+                      className="h-6 px-2 text-xs"
+                    >
+                      N
+                    </Button>
+                    <Button
+                      variant="outline"
+                      size="sm"
+                      onClick={() => {
+                        setStaticValue('YES')
+                        onUpdate(mapping.documentFieldId, { 
+                          staticValue: 'YES',
+                          sourceType: 'static',
+                          sourcePath: undefined
+                        })
+                      }}
+                      className="h-6 px-2 text-xs"
+                    >
+                      YES
+                    </Button>
+                    <Button
+                      variant="outline"
+                      size="sm"
+                      onClick={() => {
+                        setStaticValue('NO')
+                        onUpdate(mapping.documentFieldId, { 
+                          staticValue: 'NO',
+                          sourceType: 'static',
+                          sourcePath: undefined
+                        })
+                      }}
+                      className="h-6 px-2 text-xs"
+                    >
+                      NO
+                    </Button>
+                  </div>
+                  <div className="flex space-x-1">
+                    <Input
+                      value={staticValue}
+                      onChange={(e) => setStaticValue(e.target.value)}
+                      placeholder="Enter static value..."
+                      className="h-7 text-xs"
+                    />
+                    <Button
+                      variant="outline"
+                      size="sm"
+                      onClick={handleSaveStaticValue}
+                      className="h-7 px-2"
+                    >
+                      Set
+                    </Button>
+                  </div>
                 </div>
               </div>
             </div>

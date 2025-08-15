@@ -92,14 +92,14 @@ function DraggableDataSource({ source }: DraggableDataSourceProps) {
         {getIcon()}
       </div>
       <div className="flex-1 min-w-0">
-        <div className="flex items-center space-x-2">
-          <span className="text-sm font-medium truncate">{source.label}</span>
-          <Badge variant="outline" className={`text-xs ${getTypeColor()}`}>
+        <div className="flex items-start space-x-2 flex-wrap gap-1">
+          <span className="text-sm font-medium break-words">{source.label}</span>
+          <Badge variant="outline" className={`text-xs ${getTypeColor()} flex-shrink-0`}>
             {source.dataType}
           </Badge>
         </div>
         {source.description && (
-          <p className="text-xs text-muted-foreground truncate mt-1">
+          <p className="text-xs text-muted-foreground break-words mt-1">
             {source.description}
           </p>
         )}
@@ -240,7 +240,19 @@ export function DataSourcePanel({ documentType }: DataSourcePanelProps) {
   const staticSources: DataSource[] = [
     { type: 'static', path: 'static.currentDate', label: 'Current Date', category: 'system', dataType: 'date', description: 'Automatically filled with today\'s date' },
     { type: 'static', path: 'static.applicationDate', label: 'Application Date', category: 'system', dataType: 'date', description: 'Date this application was filled' },
-    { type: 'custom', path: 'custom.signature', label: 'Digital Signature', category: 'custom', dataType: 'string', description: 'Provider signature placeholder' }
+    { type: 'custom', path: 'custom.signature', label: 'Digital Signature', category: 'custom', dataType: 'string', description: 'Provider signature placeholder' },
+    
+    // Common Y/N and boolean answers
+    { type: 'static', path: 'static.Y', label: 'Y', category: 'boolean', dataType: 'string', description: 'Single letter Y answer' },
+    { type: 'static', path: 'static.N', label: 'N', category: 'boolean', dataType: 'string', description: 'Single letter N answer' },
+    { type: 'static', path: 'static.YES', label: 'YES', category: 'boolean', dataType: 'string', description: 'Uppercase YES answer' },
+    { type: 'static', path: 'static.NO', label: 'NO', category: 'boolean', dataType: 'string', description: 'Uppercase NO answer' },
+    { type: 'static', path: 'static.Yes', label: 'Yes', category: 'boolean', dataType: 'string', description: 'Capitalized Yes answer' },
+    { type: 'static', path: 'static.No', label: 'No', category: 'boolean', dataType: 'string', description: 'Capitalized No answer' },
+    { type: 'static', path: 'static.TRUE', label: 'TRUE', category: 'boolean', dataType: 'string', description: 'Uppercase TRUE answer' },
+    { type: 'static', path: 'static.FALSE', label: 'FALSE', category: 'boolean', dataType: 'string', description: 'Uppercase FALSE answer' },
+    { type: 'static', path: 'static.True', label: 'True', category: 'boolean', dataType: 'string', description: 'Capitalized True answer' },
+    { type: 'static', path: 'static.False', label: 'False', category: 'boolean', dataType: 'string', description: 'Capitalized False answer' }
   ]
 
   // Pre-configured combined field sources

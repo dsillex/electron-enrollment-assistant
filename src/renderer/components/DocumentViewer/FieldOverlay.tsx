@@ -111,37 +111,8 @@ export function FieldOverlay({ fields, pageData, currentPage }: FieldOverlayProp
             )
           }
 
-          // Fallback for fields without position data - show as a list
-          return (
-            <div
-              key={field.id}
-              className="absolute top-4 right-4 pointer-events-auto"
-              style={{ transform: `translateY(${index * 32}px)` }}
-            >
-              <Tooltip delayDuration={300}>
-                <TooltipTrigger asChild>
-                  <Badge 
-                    variant="secondary" 
-                    className="cursor-pointer hover:bg-secondary/80"
-                  >
-                    {getFieldTypeIcon(field.type)} {field.name}
-                  </Badge>
-                </TooltipTrigger>
-                <TooltipContent>
-                  <div className="space-y-1">
-                    <p className="font-medium">{field.name}</p>
-                    <p className="text-xs text-muted-foreground">
-                      Type: {field.type}
-                      {field.required && ' (Required)'}
-                    </p>
-                    {field.value && (
-                      <p className="text-xs">Current: {String(field.value)}</p>
-                    )}
-                  </div>
-                </TooltipContent>
-              </Tooltip>
-            </div>
-          )
+          // Hide fields without position data for cleaner UI
+          return null
         })}
       </div>
     </TooltipProvider>
