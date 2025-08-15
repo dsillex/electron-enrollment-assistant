@@ -43,11 +43,14 @@ export function PdfViewer({
       setIsLoading(true)
       setError(null)
 
-      // Dynamically import pdfjs-dist
-      const pdfjsLib = await import('pdfjs-dist')
+      // Dynamically import pdfjs-dist legacy build for better compatibility
+      const pdfjsLib = await import('pdfjs-dist/legacy/build/pdf.mjs')
       
-      // Set worker path for pdf.js
-      pdfjsLib.GlobalWorkerOptions.workerSrc = `https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js`
+      // Set worker path using local worker file
+      pdfjsLib.GlobalWorkerOptions.workerSrc = new URL(
+        'pdfjs-dist/legacy/build/pdf.worker.min.mjs', 
+        import.meta.url
+      ).toString()
 
       // Read the PDF file
       const fileBuffer = await window.electronAPI.readFile(filePath)
